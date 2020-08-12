@@ -1,0 +1,1006 @@
+setwd("C:/Users/alejandra bascope/Desktop/Ale/Trabajo Estad?stica - Cuanti")
+
+install.packages("dplyr")
+library(dplyr)
+install.packages("ggplot2")
+library(ggplot2)
+install.packages("readxl")
+library(readxl)
+install.packages("haven")
+library(haven)
+install.packages("Publish")
+library(Publish)
+install.packages("PropCIs")
+library(PropCIs)
+install.packages("writexl")
+library(writexl)
+install.packages("ggplot2")
+library(ggplot2)
+install.packages("lsr")
+library(lsr)
+install.packages("car")
+library(car)
+install.packages("psych")
+library(psych)
+install.packages("plych")
+library("plyr")
+
+base_cuidados <- read_excel("Consolidado_BBDD.xlsx")
+
+View(base_cuidados)
+names(base_cuidados)
+
+###GENERO
+base_genero<-base_cuidados[c("P7", "P12", "P13.a", "P13.b", "P13.c", "P14.a.1", "P14.b.1", "P14.c.1", 
+                             "P14.d.1", "P14.e.1", "P14.f.1", "P14.g.1", "P14.h.1", "P14.i.1", "P14.j.1", 
+                             "P14.k.1", "P.14.l.1")] 
+
+base_genero <- rename(base_genero, decidir=P7, cuidador=P12, trabajar=P13.a, actividades_recreativas=P13.b, 
+                       pago_empleado=P13.c, comida=P14.a.1, contencion=P14.b.1, tareas=P14.c.1, 
+                       escuela_am=P14.d.1, escuela_pm=P14.e.1, dormir=P14.f.1, corregir=P14.g.1, levantar=P14.h.1,
+                       reemplazo=P.14.l.1)
+
+base_genero <- mutate(base_genero, dicirrec = recode(base_genero$decidir, "1" = "hombre", "2" = "mujer", "99" = "N/A"))
+
+base_genero <- mutate(base_genero, cuidadorrec = recode(base_genero$cuidador, "1" = "hombre", "2" = "mujer", 
+                                                        "3" = "Otro"))
+
+base_genero <- mutate(base_genero, comidarec = recode(base_genero$comida, "1" = "mujer", "2" = "hombre", 
+                                                      "3" = "mujer", "4" = "hombre", "5" = "mujer", "6" = "hombre",
+                                                      "7"="mujer", "8"="hombre", "9" ="mujer", "10"="hombre", 
+                                                      "11"="mujer", "12"="hombre", "13"="mujer", "14"="hombre", 
+                                                      "15"="mujer", "16"="mujer", "17"="hombre"))
+
+base_genero <- mutate(base_genero, contencionrec = recode(base_genero$contencion, "1" = "mujer", 
+                                                          "2" = "hombre", "3" = "mujer", "4" = "hombre", 
+                                                          "5" = "mujer", "6" = "hombre","7"="mujer", 
+                                                          "8"="hombre", "9" ="mujer", "10"="hombre", 
+                                                          "11"="mujer", "12"="hombre", "13"="mujer", 
+                                                          "14"="hombre", "15"="mujer", "16"="mujer", 
+                                                          "17"="hombre"))
+
+base_genero <- mutate(base_genero, tareasrec = recode(base_genero$tareas, "1" = "mujer", 
+                                                      "2" = "hombre", "3" = "mujer", 
+                                                      "4" = "hombre", "5" = "mujer", "6" = "hombre",
+                                                      "7"="mujer", "8"="hombre", "9" ="mujer", "10"="hombre", 
+                                                      "11"="mujer", "12"="hombre", "13"="mujer", "14"="hombre", 
+                                                      "15"="mujer", "16"="mujer", "17"="hombre"))
+
+base_genero <- mutate(base_genero, escuela_amrec = recode(base_genero$escuela_am, "1" = "mujer", "2" = "hombre", 
+                                                          "3" = "mujer", "4" = "hombre", "5" = "mujer", 
+                                                          "6" = "hombre","7"="mujer", "8"="hombre", "9" ="mujer", 
+                                                          "10"="hombre", "11"="mujer", "12"="hombre", "13"="mujer", 
+                                                          "14"="hombre", "15"="mujer", "16"="mujer", "17"="hombre"))
+
+base_genero <- mutate(base_genero, escuela_pmrec = recode(base_genero$escuela_pm, "1" = "mujer", 
+                                                          "2" = "hombre", "3" = "mujer", 
+                                                          "4" = "hombre", "5" = "mujer", 
+                                                          "6" = "hombre","7"="mujer", "8"="hombre", 
+                                                          "9" ="mujer", "10"="hombre", "11"="mujer", 
+                                                          "12"="hombre", "13"="mujer", "14"="hombre", 
+                                                          "15"="mujer", "16"="mujer", "17"="hombre"))
+
+base_genero <- mutate(base_genero, dormirrec = recode(base_genero$dormir, "1" = "mujer", "2" = "hombre", 
+                                                      "3" = "mujer", "4" = "hombre", "5" = "mujer", 
+                                                      "6" = "hombre","7"="mujer", "8"="hombre", "9" ="mujer", 
+                                                      "10"="hombre", "11"="mujer", "12"="hombre", "13"="mujer", 
+                                                      "14"="hombre", "15"="mujer", "16"="mujer", "17"="hombre"))
+
+base_genero <- mutate(base_genero, corregirrec = recode(base_genero$corregir, "1" = "mujer", "2" = "hombre", 
+                                                        "3" = "mujer", "4" = "hombre", "5" = "mujer", 
+                                                        "6" = "hombre","7"="mujer", "8"="hombre", 
+                                                        "9" ="mujer", "10"="hombre", "11"="mujer", 
+                                                        "12"="hombre", "13"="mujer", "14"="hombre", 
+                                                        "15"="mujer", "16"="mujer", "17"="hombre"))
+
+base_genero <- mutate(base_genero, levantarrec = recode(base_genero$levantar, "1" = "mujer", "2" = "hombre", 
+                                                        "3" = "mujer", "4" = "hombre", "5" = "mujer", 
+                                                        "6" = "hombre","7"="mujer", "8"="hombre",
+                                                        "9" ="mujer", "10"="hombre", "11"="mujer", 
+                                                        "12"="hombre", "13"="mujer", "14"="hombre", 
+                                                        "15"="mujer", "16"="mujer", "17"="hombre"))
+
+base_genero <- mutate(base_genero, reemplazorec = recode(base_genero$reemplazo, "1" = "mujer", 
+                                                         "2" = "hombre", "3" = "mujer", "4" = "hombre", 
+                                                         "5" = "mujer", "6" = "hombre","7"="mujer", 
+                                                         "8"="hombre", "9" ="mujer", "10"="hombre", 
+                                                         "11"="mujer", "12"="hombre", "13"="mujer", 
+                                                         "14"="hombre", "15"="mujer", "16"="mujer", "17"="hombre"))
+
+base_genero <- mutate(base_genero, trabajarrec = recode(base_genero$trabajar, "1" = "mujer", "2" = "hombre", 
+                                                        "3" = "mujer", "4" = "hombre"))
+
+base_genero <- mutate(base_genero, actividades_recreativasrec = recode(base_genero$actividades_recreativas, 
+                                                                       "1" = "mujer", "2" = "hombre", "3" = "mujer", 
+                                                                       "4" = "hombre"))
+
+base_genero <- mutate(base_genero, pago_empleadorec = recode(base_genero$pago_empleado, "1" = "mujer", 
+                                                             "2" = "hombre", "3" = "mujer", "4" = "hombre"))
+
+
+##c?digo tablas
+
+
+#Tabla_gen0: genero de quien decide
+tabla_gen0<-table(base_genero$dicirrec)
+View(tabla_gen0)
+tabla_pgen0<-prop.table(tabla_gen0) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen0)
+round(((tabla_gen0/margin.table(tabla_gen0))*100),2)
+View(round(((tabla_gen0/margin.table(tabla_gen0))*100),2))
+
+frecrelativaporc_gen0<-as.data.frame(round(((tabla_gen0/margin.table(tabla_gen0))*100),2))
+class(frecrelativaporc_gen0)
+write_xlsx(frecrelativaporc_gen0,path = "frecrelativaporc_gen0.xlsx")
+
+#Tabla_gen1:cuidador
+tabla_gen1<-table(base_genero$cuidadorrec)
+View(tabla_gen1)
+tabla_pgen1<-prop.table(tabla_gen1) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen1)
+round(((tabla_gen1/margin.table(tabla_gen1))*100),2)
+View(round(((tabla_gen1/margin.table(tabla_gen1))*100),2))
+
+frecrelativaporc_gen1<-as.data.frame(round(((tabla_gen1/margin.table(tabla_gen1))*100),2))
+class(frecrelativaporc_gen1)
+write_xlsx(frecrelativaporc_gen1,path = "frecrelativaporc_gen1.xlsx")
+
+#Tabla_gen2:comida
+tabla_gen2<-table(base_genero$comidarec)
+View(tabla_gen2)
+tabla_pgen2<-prop.table(tabla_gen2) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen2)
+round(((tabla_gen2/margin.table(tabla_gen2))*100),2)
+View(round(((tabla_gen2/margin.table(tabla_gen2))*100),2))
+
+frecrelativaporc_gen2<-as.data.frame(round(((tabla_gen2/margin.table(tabla_gen2))*100),2))
+class(frecrelativaporc_gen2)
+write_xlsx(frecrelativaporc_gen2,path = "frecrelativaporc_gen2.xlsx")
+
+
+#Tabla_gen3:contencion
+tabla_gen3<-table(base_genero$contencionrec)
+View(tabla_gen3)
+tabla_pgen3<-prop.table(tabla_gen3) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen3)
+round(((tabla_gen3/margin.table(tabla_gen3))*100),2)
+View(round(((tabla_gen3/margin.table(tabla_gen3))*100),2))
+
+frecrelativaporc_gen3<-as.data.frame(round(((tabla_gen3/margin.table(tabla_gen3))*100),2))
+class(frecrelativaporc_gen3)
+write_xlsx(frecrelativaporc_gen3,path = "frecrelativaporc_gen3.xlsx")
+
+#Tabla_gen4:tareas
+tabla_gen4<-table(base_genero$tareasrec)
+View(tabla_gen4)
+tabla_pgen4<-prop.table(tabla_gen4) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen4)
+round(((tabla_gen4/margin.table(tabla_gen4))*100),2)
+View(round(((tabla_gen4/margin.table(tabla_gen4))*100),2))
+
+frecrelativaporc_gen4<-as.data.frame(round(((tabla_gen4/margin.table(tabla_gen4))*100),2))
+class(frecrelativaporc_gen4)
+write_xlsx(frecrelativaporc_gen4,path = "frecrelativaporc_gen4.xlsx")
+
+#Tabla_gen5:escuela am
+tabla_gen5<-table(base_genero$escuela_amrec)
+View(tabla_gen5)
+tabla_pgen5<-prop.table(tabla_gen5) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen5)
+round(((tabla_gen5/margin.table(tabla_gen5))*100),2)
+View(round(((tabla_gen5/margin.table(tabla_gen5))*100),2))
+
+frecrelativaporc_gen5<-as.data.frame(round(((tabla_gen5/margin.table(tabla_gen5))*100),2))
+class(frecrelativaporc_gen5)
+write_xlsx(frecrelativaporc_gen5,path = "frecrelativaporc_gen5.xlsx")
+
+#Tabla_gen6:escuela pm
+tabla_gen6<-table(base_genero$escuela_pmrec)
+View(tabla_gen6)
+tabla_pgen6<-prop.table(tabla_gen6) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen6)
+round(((tabla_gen6/margin.table(tabla_gen6))*100),2)
+View(round(((tabla_gen6/margin.table(tabla_gen6))*100),2))
+
+frecrelativaporc_gen6<-as.data.frame(round(((tabla_gen6/margin.table(tabla_gen6))*100),2))
+class(frecrelativaporc_gen6)
+write_xlsx(frecrelativaporc_gen6,path = "frecrelativaporc_gen6.xlsx")
+
+#Tabla_gen7:dormir
+tabla_gen7<-table(base_genero$dormirrec)
+View(tabla_gen7)
+tabla_pgen7<-prop.table(tabla_gen7) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen7)
+round(((tabla_gen7/margin.table(tabla_gen7))*100),2)
+View(round(((tabla_gen7/margin.table(tabla_gen7))*100),2))
+
+frecrelativaporc_gen7<-as.data.frame(round(((tabla_gen7/margin.table(tabla_gen7))*100),2))
+class(frecrelativaporc_gen7)
+write_xlsx(frecrelativaporc_gen7,path = "frecrelativaporc_gen7.xlsx")
+
+#Tabla_gen8:corregir
+tabla_gen8<-table(base_genero$corregirrec)
+View(tabla_gen8)
+tabla_pgen8<-prop.table(tabla_gen8) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen8)
+round(((tabla_gen8/margin.table(tabla_gen8))*100),2)
+View(round(((tabla_gen8/margin.table(tabla_gen8))*100),2))
+
+frecrelativaporc_gen8<-as.data.frame(round(((tabla_gen8/margin.table(tabla_gen8))*100),2))
+class(frecrelativaporc_gen8)
+write_xlsx(frecrelativaporc_gen8,path = "frecrelativaporc_gen8.xlsx")
+
+#Tabla_gen9:levantar
+tabla_gen9<-table(base_genero$levantarrec)
+View(tabla_gen9)
+tabla_pgen9<-prop.table(tabla_gen9) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen9)
+round(((tabla_gen9/margin.table(tabla_gen9))*100),2)
+View(round(((tabla_gen9/margin.table(tabla_gen9))*100),2))
+
+frecrelativaporc_gen9<-as.data.frame(round(((tabla_gen9/margin.table(tabla_gen9))*100),2))
+class(frecrelativaporc_gen9)
+write_xlsx(frecrelativaporc_gen9,path = "frecrelativaporc_gen9.xlsx")
+
+#Tabla_gen10:reemplazo
+tabla_gen10<-table(base_genero$reemplazorec)
+View(tabla_gen10)
+tabla_pgen0<-prop.table(tabla_gen10) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen10)
+round(((tabla_gen0/margin.table(tabla_gen10))*100),2)
+View(round(((tabla_gen10/margin.table(tabla_gen10))*100),2))
+
+frecrelativaporc_gen10<-as.data.frame(round(((tabla_gen10/margin.table(tabla_gen10))*100),2))
+class(frecrelativaporc_gen10)
+write_xlsx(frecrelativaporc_gen10,path = "frecrelativaporc_gen10.xlsx")
+
+#Tabla_gen11:trabajar
+tabla_gen11<-table(base_genero$trabajarrec)
+View(tabla_gen11)
+tabla_pgen11<-prop.table(tabla_gen11) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen11)
+round(((tabla_gen11/margin.table(tabla_gen11))*100),2)
+View(round(((tabla_gen11/margin.table(tabla_gen11))*100),2))
+
+frecrelativaporc_gen11<-as.data.frame(round(((tabla_gen11/margin.table(tabla_gen11))*100),2))
+class(frecrelativaporc_gen11)
+write_xlsx(frecrelativaporc_gen11,path = "frecrelativaporc_gen11.xlsx")
+
+#Tabla_gen12:actividades recreativas
+tabla_gen12<-table(base_genero$actividades_recreativasrec)
+View(tabla_gen12)
+tabla_pgen12<-prop.table(tabla_gen12) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen12)
+round(((tabla_gen12/margin.table(tabla_gen12))*100),2)
+View(round(((tabla_gen12/margin.table(tabla_gen12))*100),2))
+
+frecrelativaporc_gen12<-as.data.frame(round(((tabla_gen12/margin.table(tabla_gen12))*100),2))
+class(frecrelativaporc_gen12)
+write_xlsx(frecrelativaporc_gen12,path = "frecrelativaporc_gen12.xlsx")
+
+#Tabla_gen13:pago empleado
+tabla_gen13<-table(base_genero$pago_empleadorec)
+View(tabla_gen13)
+tabla_pgen13<-prop.table(tabla_gen13) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen13)
+round(((tabla_gen13/margin.table(tabla_gen13))*100),2)
+View(round(((tabla_gen13/margin.table(tabla_gen13))*100),2))
+
+frecrelativaporc_gen13<-as.data.frame(round(((tabla_gen13/margin.table(tabla_gen13))*100),2))
+class(frecrelativaporc_gen13)
+write_xlsx(frecrelativaporc_gen13,path = "frecrelativaporc_gen13.xlsx")
+
+###REMUNERACION
+
+base_remuneraci?n<-base_cuidados[c("P0", "P10", "P14.a.2", 
+                                   "P14.b.2", "P14.c.2", "P14.d.2", "P14.e.2", "P14.f.2", 
+                                   "P14.g.2", "P14.h.2", "P14.i.2", "P14.j.2", "P14.k.2", "P14.l.2")] 
+
+base_remuneraci?n <- rename(base_remuneraci?n, colegio=P0, rem_cuidador=P10, rem_comida=P14.a.2, 
+                            rem_contencion=P14.b.2, rem_tareas=P14.c.2, rem_escuela_am=P14.d.2, 
+                            rem_escuela_pm=P14.e.2, rem_dormir=P14.f.2, rem_corregir=P14.g.2, 
+                            rem_levantar=P14.h.2, rem_reemplazo=P14.l.2)
+
+base_remuneraci?n <- mutate(base_remuneraci?n, rem_colegiorec = recode(base_remuneraci?n$colegio, "1" = "Medio-Bajo", 
+                                                                        "2" = "Medio", "3"="Alto"))
+base_remuneraci?n <- mutate(base_remuneraci?n, rem_cuidadorrec = recode(base_remuneraci?n$rem_cuidador, "1" = "no", 
+                                                                          "2" = "si", "3"="si", "4"="no"))
+
+base_remuneraci?n <- mutate(base_remuneraci?n, rem_comidarec = recode(base_remuneraci?n$rem_comida, "1" = "si", "2" = "no"))
+
+base_remuneraci?n <- mutate(base_remuneraci?n, rem_contencionrec = recode(base_remuneraci?n$rem_contencion, "1" = "si", 
+                                                                      "2" = "no"))
+
+base_remuneraci?n <- mutate(base_remuneraci?n, rem_tareasrec = recode(base_remuneraci?n$rem_tareas, "1" = "si", "2" = "no"))
+
+base_remuneraci?n <- mutate(base_remuneraci?n, rem_escuela_amrec = recode(base_remuneraci?n$rem_escuela_am, 
+                                                                          "1" = "si", "2" = "no"))
+
+base_remuneraci?n <- mutate(base_remuneraci?n, rem_escuela_pmrec = recode(base_remuneraci?n$rem_escuela_pm, "1" = "si", "2" = "no"))
+
+base_remuneraci?n <- mutate(base_remuneraci?n, rem_dormirrec = recode(base_remuneraci?n$rem_dormir, "1" = "si", "2" = "no"))
+
+base_remuneraci?n <- mutate(base_remuneraci?n, rem_corregirrec = recode(base_remuneraci?n$rem_corregir, "1" = "si", "2" = "no"))
+
+base_remuneraci?n <- mutate(base_remuneraci?n, rem_levantarrec = recode(base_remuneraci?n$rem_levantar, "1" = "si", 
+                                                                    "2" = "no"))
+base_remuneraci?n <- mutate(base_remuneraci?n, rem_reemplazorec = recode(base_remuneraci?n$rem_reemplazo, "1" = "si", 
+                                                                     "2" = "no"))
+
+##c?digo tablas
+
+#Tabla_rem1: remuneracion cuidador
+tabla_rem1<-table(base_remuneraci?n$rem_cuidadorrec)
+View(tabla_rem1)
+tabla_prem1<-prop.table(tabla_rem1) #C?lculo de frecuencias relativas como objeto.
+View(tabla_prem1)
+round(((tabla_rem1/margin.table(tabla_rem1))*100),2)
+View(round(((tabla_rem1/margin.table(tabla_rem1))*100),2))
+
+frecrelativaporc_rem1<-as.data.frame(round(((tabla_rem1/margin.table(tabla_rem1))*100),2))
+class(frecrelativaporc_rem1)
+write_xlsx(frecrelativaporc_rem1,path = "frecrelativaporc_rem1.xlsx")
+
+#Tabla_rem2:comida
+tabla_rem2<-table(base_remuneraci?n$rem_comidarec)
+View(tabla_rem2)
+tabla_prem2<-prop.table(tabla_rem2) #C?lculo de frecuencias relativas como objeto.
+View(tabla_prem2)
+round(((tabla_rem2/margin.table(tabla_rem2))*100),2)
+View(round(((tabla_rem2/margin.table(tabla_rem2))*100),2))
+
+frecrelativaporc_rem2<-as.data.frame(round(((tabla_rem2/margin.table(tabla_rem2))*100),2))
+class(frecrelativaporc_rem2)
+write_xlsx(frecrelativaporc_rem2,path = "frecrelativaporc_rem2.xlsx")
+
+#Tabla_rem3:remuneracion por contencion
+tabla_rem3<-table(base_remuneraci?n$rem_contencionrec)
+View(tabla_rem3)
+tabla_prem3<-prop.table(tabla_rem3) #C?lculo de frecuencias relativas como objeto.
+View(tabla_prem3)
+round(((tabla_rem3/margin.table(tabla_rem3))*100),2)
+View(round(((tabla_rem3/margin.table(tabla_rem3))*100),2))
+
+frecrelativaporc_rem3<-as.data.frame(round(((tabla_rem3/margin.table(tabla_rem3))*100),2))
+class(frecrelativaporc_rem3)
+write_xlsx(frecrelativaporc_rem3,path = "frecrelativaporc_rem3.xlsx")
+
+#Tabla_rem4: tareas
+tabla_rem4<-table(base_remuneraci?n$rem_tareasrec)
+View(tabla_rem4)
+tabla_prem4<-prop.table(tabla_rem4) #C?lculo de frecuencias relativas como objeto.
+View(tabla_prem4)
+round(((tabla_rem4/margin.table(tabla_rem4))*100),2)
+View(round(((tabla_rem4/margin.table(tabla_rem4))*100),2))
+
+frecrelativaporc_rem4<-as.data.frame(round(((tabla_rem4/margin.table(tabla_rem4))*100),2))
+class(frecrelativaporc_rem4)
+write_xlsx(frecrelativaporc_rem4,path = "frecrelativaporc_rem4.xlsx")
+
+#Tabla_rem5: quien lleva al ni?o a la escuela
+tabla_rem5<-table(base_remuneraci?n$rem_escuela_amrec)
+View(tabla_rem5)
+tabla_prem2<-prop.table(tabla_rem5) #C?lculo de frecuencias relativas como objeto.
+View(tabla_prem5)
+round(((tabla_rem5/margin.table(tabla_rem5))*100),2)
+View(round(((tabla_rem5/margin.table(tabla_rem5))*100),2))
+
+frecrelativaporc_rem5<-as.data.frame(round(((tabla_rem5/margin.table(tabla_rem5))*100),2))
+class(frecrelativaporc_rem5)
+write_xlsx(frecrelativaporc_rem5,path = "frecrelativaporc_rem5.xlsx")
+
+#Tabla_rem6: quien va a buscar al ni?o
+tabla_rem6<-table(base_remuneraci?n$rem_escuela_pmrec)
+View(tabla_rem6)
+tabla_prem6<-prop.table(tabla_rem6) #C?lculo de frecuencias relativas como objeto.
+View(tabla_prem6)
+round(((tabla_rem6/margin.table(tabla_rem6))*100),2)
+View(round(((tabla_rem6/margin.table(tabla_rem6))*100),2))
+
+frecrelativaporc_rem6<-as.data.frame(round(((tabla_rem6/margin.table(tabla_rem6))*100),2))
+class(frecrelativaporc_rem6)
+write_xlsx(frecrelativaporc_rem6,path = "frecrelativaporc_rem6.xlsx")
+
+#Tabla_rem7: quien duerme el ni?o
+tabla_rem7<-table(base_remuneraci?n$rem_dormirrec)
+View(tabla_rem7)
+tabla_prem7<-prop.table(tabla_rem7) #C?lculo de frecuencias relativas como objeto.
+View(tabla_prem7)
+round(((tabla_rem7/margin.table(tabla_rem7))*100),2)
+View(round(((tabla_rem7/margin.table(tabla_rem7))*100),2))
+
+frecrelativaporc_rem7<-as.data.frame(round(((tabla_rem7/margin.table(tabla_rem7))*100),2))
+class(frecrelativaporc_rem7)
+write_xlsx(frecrelativaporc_rem7,path = "frecrelativaporc_rem7.xlsx")
+
+#Tabla_rem8: quien corrige al ni?o
+tabla_rem8<-table(base_remuneraci?n$rem_corregitrec)
+View(tabla_rem8)
+tabla_prem8<-prop.table(tabla_rem8) #C?lculo de frecuencias relativas como objeto.
+View(tabla_prem8)
+round(((tabla_rem8/margin.table(tabla_rem8))*100),2)
+View(round(((tabla_rem8/margin.table(tabla_rem8))*100),2))
+
+frecrelativaporc_rem8<-as.data.frame(round(((tabla_rem8/margin.table(tabla_rem8))*100),2))
+class(frecrelativaporc_rem8)
+write_xlsx(frecrelativaporc_rem8,path = "frecrelativaporc_rem2.xlsx")
+
+#Tabla_rem9: quien levanta al ni?o
+tabla_rem9<-table(base_remuneraci?n$rem_levantarrec)
+View(tabla_rem9)
+tabla_prem9<-prop.table(tabla_rem9) #C?lculo de frecuencias relativas como objeto.
+View(tabla_prem9)
+round(((tabla_rem9/margin.table(tabla_rem9))*100),2)
+View(round(((tabla_rem9/margin.table(tabla_rem9))*100),2))
+
+frecrelativaporc_rem9<-as.data.frame(round(((tabla_rem9/margin.table(tabla_rem9))*100),2))
+class(frecrelativaporc_rem9)
+write_xlsx(frecrelativaporc_rem9,path = "frecrelativaporc_rem9.xlsx")
+
+#Tabla_rem10: quien se queda cuando los padres sales
+tabla_rem10<-table(base_remuneraci?n$rem_reemplazorec)
+View(tabla_rem10)
+tabla_prem10<-prop.table(tabla_rem10) #C?lculo de frecuencias relativas como objeto.
+View(tabla_prem10)
+round(((tabla_rem10/margin.table(tabla_rem10))*100),2)
+View(round(((tabla_rem10/margin.table(tabla_rem10))*100),2))
+
+frecrelativaporc_rem10<-as.data.frame(round(((tabla_rem10/margin.table(tabla_rem10))*100),2))
+class(frecrelativaporc_rem10)
+write_xlsx(frecrelativaporc_rem10,path = "frecrelativaporc_rem10.xlsx")
+
+###ESTRATEGIAS
+base_estrategias <- read_excel ("Estrategias.xlsx")
+
+base_estrategias1<-base_estrategias[c("P0", "P10", "P14.a", "P14.b", "P14.c", "P14.d", "P14.e", 
+                                      "P14.f", "P14.g", "P14.h", "P14.i", "P14.j", 
+                                      "P14.k", "P14.l")] 
+
+base_estrategias1 <- rename(base_estrategias, colegio=P0, est_cuidador=P10, est_comida=P14.a, 
+                            est_contencion=P14.b, est_tareas=P14.c, est_escuela_am=P14.d, 
+                            est_escuela_pm=P14.e, est_dormir=P14.f, est_corregir=P14.g, 
+                            est_levantar=P14.h,  est_reemplazo=P14.l)
+
+
+#Recodificar valores de respuesta
+#Colegio
+base_estrategias1 <- mutate(base_estrategias1, colegio_rec = recode(base_estrategias1$colegio, "1" = "Medio-Bajo",
+                                                                  "2" = "Medio", "3" = "Alto"))
+#Cuidador
+base_estrategias1 <- mutate(base_estrategias1, est_cuidador_rec = recode(base_estrategias1$est_cuidador, 
+                                                                        "1" = "Mujer con remuneracion", 
+                                                                        "2" = "Mujer sin remuneraci?n",
+                                                                        "3" = "Hombre con remuneracion",
+                                                                        "4" = "Hombre sin remuneracion"))
+                            
+#Comida
+base_estrategias1 <- mutate(base_estrategias1, est_comida_rec = recode(base_estrategias1$est_comida, 
+                                                                        "1" = "Mujer con remuneracion", 
+                                                                        "2" = "Mujer sin remuneraci?n",
+                                                                        "3" = "Hombre con remuneraci?n",
+                                                                        "4" = "Hombre sin remuneracion"))
+
+#Contencion
+base_estrategias1 <- mutate(base_estrategias1, est_contencion_rec = recode(base_estrategias1$est_contencion, 
+                                                                        "1" = "Mujer con remuneracion", 
+                                                                        "2" = "Mujer sin remuneraci?n",
+                                                                        "3" = "Hombre con remuneraci?n",
+                                                                        "4" = "Hombre sin remuneracion"))
+
+#Tareas
+base_estrategias1 <- mutate(base_estrategias1, est_tareas_rec = recode(base_estrategias1$est_tareas, 
+                                                                        "1" = "Mujer con remuneracion", 
+                                                                        "2" = "Mujer sin remuneraci?n",
+                                                                        "3" = "Hombre con remuneraci?n",
+                                                                        "4" = "Hombre sin remuneracion"))
+
+#Escuela AM
+base_estrategias1 <- mutate(base_estrategias1, est_escuela_am_rec = recode(base_estrategias1$est_escuela_am, 
+                                                                        "1" = "Mujer con remuneracion", 
+                                                                        "2" = "Mujer sin remuneraci?n",
+                                                                        "3" = "Hombre con remuneraci?n",
+                                                                        "4" = "Hombre sin remuneracion"))
+
+#Escuela PM
+base_estrategias1 <- mutate(base_estrategias1, est_escuela_pm_rec = recode(base_estrategias1$est_escuela_pm, 
+                                                                        "1" = "Mujer con remuneracion", 
+                                                                        "2" = "Mujer sin remuneraci?n",
+                                                                        "3" = "Hombre con remuneraci?n",
+                                                                        "4" = "Hombre sin remuneracion"))
+
+#Dormir
+base_estrategias1 <- mutate(base_estrategias1, est_dormir_rec = recode(base_estrategias1$est_dormir, 
+                                                                        "1" = "Mujer con remuneracion", 
+                                                                        "2" = "Mujer sin remuneraci?n",
+                                                                        "3" = "Hombre con remuneraci?n",
+                                                                        "4" = "Hombre sin remuneracion"))
+
+#Corregir
+base_estrategias1 <- mutate(base_estrategias1, est_corregir_rec = recode(base_estrategias1$est_corregir, 
+                                                                        "1" = "Mujer con remuneracion", 
+                                                                        "2" = "Mujer sin remuneraci?n",
+                                                                        "3" = "Hombre con remuneraci?n",
+                                                                        "4" = "Hombre sin remuneracion"))
+
+#Levantar
+base_estrategias1 <- mutate(base_estrategias1, est_levantar_rec = recode(base_estrategias1$est_levantar, 
+                                                                        "1" = "Mujer con remuneracion", 
+                                                                        "2" = "Mujer sin remuneraci?n",
+                                                                        "3" = "Hombre con remuneraci?n",
+                                                                        "4" = "Hombre sin remuneracion"))
+
+#Reemplazo
+base_estrategias1 <- mutate(base_estrategias1, est_reemplazo_rec = recode(base_estrategias1$est_reemplazo, 
+                                                                        "1" = "Mujer con remuneracion", 
+                                                                        "2" = "Mujer sin remuneraci?n",
+                                                                        "3" = "Hombre con remuneraci?n",
+                                                                        "4" = "Hombre sin remuneracion"))
+
+##Tablas por variable
+#Tabla_est0: Colegio
+tabla_est0 <-table(base_estrategias1$est_colegio_rec)
+View(tabla_est0)
+tabla_pest0<-prop.table(tabla_est0) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pest0)
+round(((tabla_est0/margin.table(tabla_est0))*100),2)
+View(round(((tabla_est0/margin.table(tabla_est0))*100),2))
+
+frecrelativaporc_est0<-as.data.frame(round(((tabla_est0/margin.table(tabla_est0))*100),2))
+class(frecrelativaporc_est0)
+write_xlsx(frecrelativaporc_est0,path = "frecrelativaporc_est0.xlsx")
+
+#Tabla_est1: Cuidador
+tabla_est1 <-table(base_estrategias1$est_cuidador_rec)
+View(tabla_est1)
+tabla_pest1<-prop.table(tabla_est1) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pest1)
+round(((tabla_est1/margin.table(tabla_est1))*100),2)
+View(round(((tabla_est1/margin.table(tabla_est1))*100),2))
+
+frecrelativaporc_est1<-as.data.frame(round(((tabla_est1/margin.table(tabla_est1))*100),2))
+class(frecrelativaporc_est1)
+write_xlsx(frecrelativaporc_est1,path = "frecrelativaporc_est1.xlsx")
+
+#Gr?fico
+
+ggplot(base_estrategias1, aes(x = factor(est_cuidador_rec))) +
+  geom_bar(width = 0.4, fill=rgb(0.1,0.3,0.5,0.7), aes(y = (..count..)/sum(..count..))) +
+  scale_x_discrete("Estrategia de Cuidado para Cuidadora/or",
+                   na.translate = FALSE) + 
+  scale_y_continuous("Porcentaje",labels=scales::percent) + 
+  labs(title = "Gr?fico de barras 1",
+       subtitle = "Frecuencia relativa porcentual de la variable Encargada/o principal del cuidado")
+
+#Tabla_est2: Comida
+tabla_est2 <-table(base_estrategias1$est_comida_rec)
+View(tabla_est2)
+tabla_pest2<-prop.table(tabla_est2) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pest2)
+round(((tabla_est2/margin.table(tabla_est2))*100),2)
+View(round(((tabla_est2/margin.table(tabla_est2))*100),2))
+
+frecrelativaporc_est2<-as.data.frame(round(((tabla_est2/margin.table(tabla_est2))*100),2))
+class(frecrelativaporc_est2)
+write_xlsx(frecrelativaporc_est2,path = "frecrelativaporc_est2.xlsx")
+
+#Tabla_est3: Contencion
+tabla_est3 <-table(base_estrategias1$est_contencion_rec)
+View(tabla_est3)
+tabla_pest3<-prop.table(tabla_est3) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pest3)
+round(((tabla_est3/margin.table(tabla_est3))*100),2)
+View(round(((tabla_est3/margin.table(tabla_est3))*100),2))
+
+frecrelativaporc_est3<-as.data.frame(round(((tabla_est3/margin.table(tabla_est3))*100),2))
+class(frecrelativaporc_est3)
+write_xlsx(frecrelativaporc_est3,path = "frecrelativaporc_est3.xlsx")
+
+#Tabla_est4: Tareas
+tabla_est4 <-table(base_estrategias1$est_tareas_rec)
+View(tabla_est4)
+tabla_pest4<-prop.table(tabla_est4) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pest4)
+round(((tabla_est4/margin.table(tabla_est4))*100),2)
+View(round(((tabla_est4/margin.table(tabla_est4))*100),2))
+
+frecrelativaporc_est4<-as.data.frame(round(((tabla_est4/margin.table(tabla_est4))*100),2))
+class(frecrelativaporc_est4)
+write_xlsx(frecrelativaporc_est4,path = "frecrelativaporc_est4.xlsx")
+
+#Tabla_est5: Escuela AM
+tabla_est5 <-table(base_estrategias1$est_escuela_am_rec)
+View(tabla_est5)
+tabla_pest5<-prop.table(tabla_est5) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pest5)
+round(((tabla_est5/margin.table(tabla_est5))*100),2)
+View(round(((tabla_est5/margin.table(tabla_est5))*100),2))
+
+frecrelativaporc_est5<-as.data.frame(round(((tabla_est5/margin.table(tabla_est5))*100),2))
+class(frecrelativaporc_est5)
+write_xlsx(frecrelativaporc_est5,path = "frecrelativaporc_est5.xlsx")
+
+#Tabla_est6: Escuela PM
+tabla_est6 <-table(base_estrategias1$est_escuela_pm_rec)
+View(tabla_est6)
+tabla_pest6<-prop.table(tabla_est6) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pest6)
+round(((tabla_est6/margin.table(tabla_est6))*100),2)
+View(round(((tabla_est6/margin.table(tabla_est6))*100),2))
+
+frecrelativaporc_est6<-as.data.frame(round(((tabla_est6/margin.table(tabla_est6))*100),2))
+class(frecrelativaporc_est6)
+write_xlsx(frecrelativaporc_est6,path = "frecrelativaporc_est6.xlsx")
+
+#Tabla_est7: Dormir
+tabla_est7 <-table(base_estrategias1$est_dormir_rec)
+View(tabla_est7)
+tabla_pest7<-prop.table(tabla_est7) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pest7)
+round(((tabla_est7/margin.table(tabla_est7))*100),2)
+View(round(((tabla_est7/margin.table(tabla_est7))*100),2))
+
+frecrelativaporc_est7<-as.data.frame(round(((tabla_est7/margin.table(tabla_est7))*100),2))
+class(frecrelativaporc_est7)
+write_xlsx(frecrelativaporc_est7,path = "frecrelativaporc_est7.xlsx")
+
+#Tabla_est8: Corregir
+tabla_est8 <-table(base_estrategias1$est_corregir_rec)
+View(tabla_est8)
+tabla_pest8<-prop.table(tabla_est8) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pest8)
+round(((tabla_est8/margin.table(tabla_est8))*100),2)
+View(round(((tabla_est8/margin.table(tabla_est8))*100),2))
+
+frecrelativaporc_est8<-as.data.frame(round(((tabla_est8/margin.table(tabla_est8))*100),2))
+class(frecrelativaporc_est8)
+write_xlsx(frecrelativaporc_est8,path = "frecrelativaporc_est8.xlsx")
+
+#Tabla_est9: Levantar
+tabla_est9 <-table(base_estrategias1$est_levantar_rec)
+View(tabla_est9)
+tabla_pest9<-prop.table(tabla_est9) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pest9)
+round(((tabla_est9/margin.table(tabla_est9))*100),2)
+View(round(((tabla_est9/margin.table(tabla_est9))*100),2))
+
+frecrelativaporc_est9<-as.data.frame(round(((tabla_est9/margin.table(tabla_est9))*100),2))
+class(frecrelativaporc_est9)
+write_xlsx(frecrelativaporc_est9,path = "frecrelativaporc_est9.xlsx")
+
+#Tabla_est10: Reemplazo
+tabla_est10 <-table(base_estrategias1$est_levantar_rec)
+View(tabla_est10)
+tabla_pest10<-prop.table(tabla_est10) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pest10)
+round(((tabla_est10/margin.table(tabla_est10))*100),2)
+View(round(((tabla_est10/margin.table(tabla_est10))*100),2))
+
+frecrelativaporc_est10<-as.data.frame(round(((tabla_est10/margin.table(tabla_est10))*100),2))
+class(frecrelativaporc_est10)
+write_xlsx(frecrelativaporc_est10,path = "frecrelativaporc_est10.xlsx")
+
+##RELACI?N CON NI?O
+#1. Renombrar respuestas
+base_genero <- mutate(base_genero, comidarec2 = recode(base_genero$comida, "1" = "Madre", "2" = "Otro", 
+                                                      "3" = "Otro", "4" = "Otro", "5" = "Madre", "6" = "Otro",
+                                                      "7"="Otro", "8"="Otro", "9" ="Otro", "10"="Otro", 
+                                                      "11"="Otro", "12"="Otro", "13"="Otro", "14"="Otro", 
+                                                      "15"="Otro", "16"="Otro", "17"="Otro"))
+
+base_genero <- mutate(base_genero, contencionrec2 = recode(base_genero$contencion, "1" = "Madre", "2" = "Otro", 
+                                                          "3" = "Otro", "4" = "Otro", "5" = "Madre", "6" = "Otro",
+                                                          "7"="Otro", "8"="Otro", "9" ="Otro", "10"="Otro", 
+                                                          "11"="Otro", "12"="Otro", "13"="Otro", "14"="Otro", 
+                                                          "15"="Otro", "16"="Otro", "17"="Otro"))
+
+base_genero <- mutate(base_genero, tareasrec2 = recode(base_genero$tareas, "1" = "Madre", "2" = "Otro", 
+                                                      "3" = "Otro", "4" = "Otro", "5" = "Madre", "6" = "Otro",
+                                                      "7"="Otro", "8"="Otro", "9" ="Otro", "10"="Otro", 
+                                                      "11"="Otro", "12"="Otro", "13"="Otro", "14"="Otro", 
+                                                      "15"="Otro", "16"="Otro", "17"="Otro"))
+
+base_genero <- mutate(base_genero, escuela_amrec2 = recode(base_genero$escuela_am, "1" = "Madre", "2" = "Otro", 
+                                                          "3" = "Otro", "4" = "Otro", "5" = "Madre", "6" = "Otro",
+                                                          "7"="Otro", "8"="Otro", "9" ="Otro", "10"="Otro", 
+                                                          "11"="Otro", "12"="Otro", "13"="Otro", "14"="Otro", 
+                                                          "15"="Otro", "16"="Otro", "17"="Otro"))
+
+base_genero <- mutate(base_genero, escuela_pmrec2 = recode(base_genero$escuela_pm, "1" = "Madre", "2" = "Otro", 
+                                                          "3" = "Otro", "4" = "Otro", "5" = "Madre", "6" = "Otro",
+                                                          "7"="Otro", "8"="Otro", "9" ="Otro", "10"="Otro", 
+                                                          "11"="Otro", "12"="Otro", "13"="Otro", "14"="Otro", 
+                                                          "15"="Otro", "16"="Otro", "17"="Otro"))
+
+base_genero <- mutate(base_genero, dormirrec2 = recode(base_genero$dormir, "1" = "Madre", "2" = "Otro", 
+                                                      "3" = "Otro", "4" = "Otro", "5" = "Madre", "6" = "Otro",
+                                                      "7"="Otro", "8"="Otro", "9" ="Otro", "10"="Otro", 
+                                                      "11"="Otro", "12"="Otro", "13"="Otro", "14"="Otro", 
+                                                      "15"="Otro", "16"="Otro", "17"="Otro"))
+
+base_genero <- mutate(base_genero, corregirrec2 = recode(base_genero$corregir, "1" = "Madre", "2" = "Otro", 
+                                                        "3" = "Otro", "4" = "Otro", "5" = "Madre", "6" = "Otro",
+                                                        "7"="Otro", "8"="Otro", "9" ="Otro", "10"="Otro", 
+                                                        "11"="Otro", "12"="Otro", "13"="Otro", "14"="Otro", 
+                                                        "15"="Otro", "16"="Otro", "17"="Otro"))
+
+base_genero <- mutate(base_genero, levantarrec2 = recode(base_genero$levantar, "1" = "Madre", "2" = "Otro", 
+                                                        "3" = "Otro", "4" = "Otro", "5" = "Madre", "6" = "Otro",
+                                                        "7"="Otro", "8"="Otro", "9" ="Otro", "10"="Otro", 
+                                                        "11"="Otro", "12"="Otro", "13"="Otro", "14"="Otro", 
+                                                        "15"="Otro", "16"="Otro", "17"="Otro"))
+
+base_genero <- mutate(base_genero, reemplazorec2 = recode(base_genero$reemplazo, "1" = "Madre", "2" = "Otro", 
+                                                         "3" = "Otro", "4" = "Otro", "5" = "Madre", "6" = "Otro",
+                                                         "7"="Otro", "8"="Otro", "9" ="Otro", "10"="Otro", 
+                                                         "11"="Otro", "12"="Otro", "13"="Otro", "14"="Otro", 
+                                                         "15"="Otro", "16"="Otro", "17"="Otro"))
+
+#2. Tablas
+#Tabla_gen01:comida
+tabla_gen01<-table(base_genero$comidarec2)
+View(tabla_gen01)
+tabla_pgen01<-prop.table(tabla_gen01) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen01)
+round(((tabla_gen01/margin.table(tabla_gen01))*100),2)
+View(round(((tabla_gen01/margin.table(tabla_gen01))*100),2))
+
+frecrelativaporc_gen01<-as.data.frame(round(((tabla_gen01/margin.table(tabla_gen01))*100),2))
+class(frecrelativaporc_gen01)
+write_xlsx(frecrelativaporc_gen01,path = "frecrelativaporc_gen01.xlsx")
+
+
+#Tabla_gen02:contencion
+tabla_gen02<-table(base_genero$contencionrec2)
+View(tabla_gen02)
+tabla_pgen02<-prop.table(tabla_gen02) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen02)
+round(((tabla_gen02/margin.table(tabla_gen02))*100),2)
+View(round(((tabla_gen02/margin.table(tabla_gen02))*100),2))
+
+frecrelativaporc_gen02<-as.data.frame(round(((tabla_gen02/margin.table(tabla_gen02))*100),2))
+class(frecrelativaporc_gen02)
+write_xlsx(frecrelativaporc_gen02,path = "frecrelativaporc_gen02.xlsx")
+
+#Tabla_gen03:tareas
+tabla_gen03<-table(base_genero$tareasrec2)
+View(tabla_gen03)
+tabla_pgen03<-prop.table(tabla_gen03) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen03)
+round(((tabla_gen03/margin.table(tabla_gen03))*100),2)
+View(round(((tabla_gen03/margin.table(tabla_gen03))*100),2))
+
+frecrelativaporc_gen03<-as.data.frame(round(((tabla_gen03/margin.table(tabla_gen03))*100),2))
+class(frecrelativaporc_gen03)
+write_xlsx(frecrelativaporc_gen03,path = "frecrelativaporc_gen03.xlsx")
+
+#Tabla_gen04:escuela am
+tabla_gen04<-table(base_genero$escuela_amrec2)
+View(tabla_gen04)
+tabla_pgen04<-prop.table(tabla_gen04) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen04)
+round(((tabla_gen04/margin.table(tabla_gen04))*100),2)
+View(round(((tabla_gen04/margin.table(tabla_gen04))*100),2))
+
+frecrelativaporc_gen04<-as.data.frame(round(((tabla_gen04/margin.table(tabla_gen04))*100),2))
+class(frecrelativaporc_gen04)
+write_xlsx(frecrelativaporc_gen04,path = "frecrelativaporc_gen04.xlsx")
+
+#Tabla_gen05:escuela pm
+tabla_gen05<-table(base_genero$escuela_pmrec2)
+View(tabla_gen05)
+tabla_pgen05<-prop.table(tabla_gen05) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen05)
+round(((tabla_gen05/margin.table(tabla_gen05))*100),2)
+View(round(((tabla_gen05/margin.table(tabla_gen05))*100),2))
+
+frecrelativaporc_gen05<-as.data.frame(round(((tabla_gen05/margin.table(tabla_gen05))*100),2))
+class(frecrelativaporc_gen05)
+write_xlsx(frecrelativaporc_gen05,path = "frecrelativaporc_gen05.xlsx")
+
+#Tabla_gen06:dormir
+tabla_gen06<-table(base_genero$dormirrec2)
+View(tabla_gen06)
+tabla_pgen06<-prop.table(tabla_gen06) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen06)
+round(((tabla_gen06/margin.table(tabla_gen06))*100),2)
+View(round(((tabla_gen06/margin.table(tabla_gen06))*100),2))
+
+frecrelativaporc_gen06<-as.data.frame(round(((tabla_gen06/margin.table(tabla_gen06))*100),2))
+class(frecrelativaporc_gen06)
+write_xlsx(frecrelativaporc_gen06,path = "frecrelativaporc_gen06.xlsx")
+
+#Tabla_gen07:corregir
+tabla_gen07<-table(base_genero$corregirrec2)
+View(tabla_gen07)
+tabla_pgen07<-prop.table(tabla_gen07) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen07)
+round(((tabla_gen07/margin.table(tabla_gen07))*100),2)
+View(round(((tabla_gen07/margin.table(tabla_gen07))*100),2))
+
+frecrelativaporc_gen07<-as.data.frame(round(((tabla_gen07/margin.table(tabla_gen07))*100),2))
+class(frecrelativaporc_gen07)
+write_xlsx(frecrelativaporc_gen07,path = "frecrelativaporc_gen07.xlsx")
+
+#Tabla_gen08:levantar
+tabla_gen08<-table(base_genero$levantarrec2)
+View(tabla_gen08)
+tabla_pgen08<-prop.table(tabla_gen08) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen08)
+round(((tabla_gen08/margin.table(tabla_gen08))*100),2)
+View(round(((tabla_gen08/margin.table(tabla_gen08))*100),2))
+
+frecrelativaporc_gen08<-as.data.frame(round(((tabla_gen08/margin.table(tabla_gen08))*100),2))
+class(frecrelativaporc_gen08)
+write_xlsx(frecrelativaporc_gen08,path = "frecrelativaporc_gen08.xlsx")
+
+#Tabla_gen09:reemplazo
+tabla_gen09<-table(base_genero$reemplazorec2)
+View(tabla_gen09)
+tabla_pgen09<-prop.table(tabla_gen09) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pgen09)
+round(((tabla_gen09/margin.table(tabla_gen09))*100),2)
+View(round(((tabla_gen09/margin.table(tabla_gen09))*100),2))
+
+frecrelativaporc_gen09<-as.data.frame(round(((tabla_gen09/margin.table(tabla_gen09))*100),2))
+class(frecrelativaporc_gen09)
+write_xlsx(frecrelativaporc_gen09,path = "frecrelativaporc_gen09.xlsx")
+
+
+##CUIDADO COMO TRABAJO
+base_cuidados <- read_excel ("Consolidado_BBDD.xlsx")
+base_cuidado_trabajo <- base_cuidados[c("P15")]
+base_cuidado_trabajo <- rename(base_cuidados,cuidado_trabajo=P15)
+
+tabla_cuidado_trabajo <-table(base_cuidado_trabajo$cuidado_trabajo)
+View(tabla_cuidado_trabajo)
+tabla_pcuidado_trabajo<-prop.table(tabla_cuidado_trabajo) #C?lculo de frecuencias relativas como objeto.
+View(tabla_pcuidado_trabajo)
+round(((tabla_cuidado_trabajo/margin.table(tabla_cuidado_trabajo))*100),2)
+View(round(((tabla_cuidado_trabajo/margin.table(tabla_cuidado_trabajo))*100),2))
+
+frecrelativaporc_ctrabajo<-as.data.frame(round(((tabla_cuidado_trabajo/margin.table(tabla_cuidado_trabajo))*100),2))
+class(frecrelativaporc_ctrabajo)
+write_xlsx(frecrelativaporc_ctrabajo,path = "frecrelativaporc_ctrabajo.xlsx")
+
+
+##TABLAS DE CONTINGENCIA Y PRUEBAS X2
+#G?nero
+base_cuidados <- read_excel ("Consolidado_BBDD.xlsx")
+View(base_cuidados)
+names(base_cuidados)
+base_genero<-base_cuidados[c("P7", "P12", "P13.a", "P13.b", "P13.c", "P14.a.1", "P14.b.1", "P14.c.1", 
+                             "P14.d.1", "P14.e.1", "P14.f.1", "P14.g.1", "P14.h.1", "P14.i.1", "P14.j.1", 
+                             "P14.k.1", "P.14.l.1")]
+base_genero <- rename(base_genero, decidir=P7, cuidador=P12, trabajar=P13.a, actividades_recreativas=P13.b, 
+                      pago_empleado=P13.c, comida=P14.a.1, contencion=P14.b.1, tareas=P14.c.1, 
+                      escuela_am=P14.d.1, escuela_pm=P14.e.1, dormir=P14.f.1, corregir=P14.g.1, levantar=P14.h.1,
+                      reemplazo=P.14.l.1)
+base_genero <- mutate(base_genero, cuidadorrec = recode(base_genero$cuidador, "1" = "hombre", "2" = "mujer", 
+                                                      "3" = "Otro"))
+class(base_genero)
+#Tipo de colegio
+base_colegios<-base_cuidados[c("P0")]
+base_colegios <- rename(base_colegios, Tipo_Colegio=P0)
+base_colegios <- mutate(base_colegios, colegiorec = recode(base_colegios$Tipo_Colegio, "1" = "medio-bajo", "2" = "medio", 
+                                                        "3" = "alto"))
+class(base_colegios)
+
+###G?nero y Tipo de colegio
+#Primero miramos la variable tramo de ingreso por s?? sola
+table(base_colegios$colegiorec, exclude = FALSE) #frecuencias observadas
+prop.table(table(base_colegios$colegiorec)) #proporciones
+
+
+#G?nero cuidador seg?n colegio
+
+table(base_colegios$colegiorec,base_genero$cuidadorrec,exclude = FALSE) #frecuencias observadas
+prop.table(table(base_colegios$colegiorec,base_genero$cuidadorrec,exclude = FALSE),margin = 2) #proporciones columna, clases según tramos de ingresos si queremos utilizar proporciones fila: margin = 1.
+
+#puedo obtener frecuencias marginales (es el mismo resultado que pedir una tabla de frecuencia)
+margin.table(table(base_colegios$colegiorec,base_genero$cuidadorrec), 1) #variable ingresos
+margin.table(table(base_colegios$colegiorec,base_genero$cuidadorrec), 2) #variable tipolog??a
+
+#Para solicitar estadistico chi-cuadrado y tamano efecto debo guardar la tabla bivariada con frecuencias observadas como un objeto
+genero_co=table(base_colegios$colegiorec,base_genero$cuidadorrec,exclude = FALSE)
+chisq.test(genero_co) #chi cuadrado, con paquete base
+#para este caso rechazo H0 con un 99% de confianza
+
+#si guardamos el test como objeto podemos obtener otros datos
+chi_genero=chisq.test(genero_co) 
+names(chi_genero)
+chi_genero$observed   # observed counts 
+chi_genero$expected   # expected counts under the null
+
+#Considerando que tenemos una tabla 4x3, utilizamos V de Cramer (paquete lsr)
+
+
+#en el caso que quiera estimar un estad??stico de tamaño efecto para tabla 2x2, utilizar paquete psych: phi(x)
+
+
+###Remuneracion segun colegio
+#Remuneracion
+base_remuneraci?n$rem_cuidadorrec
+
+#Tipo de colegio
+base_remuneraci?n$rem_colegiorec
+
+#Primero miramos la variable tramo de ingreso por s?? sola
+table(base_remuneraci?n$rem_colegiorec,exclude = FALSE) #frecuencias observadas
+prop.table(table(base_remuneraci?n$rem_colegiorec,exclude = FALSE)) #proporciones
+
+
+#Remuneracion segun tipo de colegio
+
+table(base_remuneraci?n$rem_colegiorec,base_remuneraci?n$rem_cuidadorrec,exclude = FALSE) #frecuencias observadas
+prop.table(table(base_remuneraci?n$rem_colegiorec,base_remuneraci?n$rem_cuidadorrec,exclude = FALSE),margin = 2) #proporciones columna, clases según tramos de ingresos si queremos utilizar proporciones fila: margin = 1.
+
+#puedo obtener frecuencias marginales (es el mismo resultado que pedir una tabla de frecuencia)
+margin.table(table(base_remuneraci?n$rem_colegiorec,base_remuneraci?n$rem_cuidadorrec), 1) #variable 
+margin.table(table(base_remuneraci?n$rem_colegiorec,base_remuneraci?n$rem_cuidadorrec), 2) #variable 
+
+#Para solicitar estadistico chi-cuadrado y tamano efecto debo guardar la tabla bivariada con frecuencias observadas como un objeto
+remuneracion_co=table(base_remuneraci?n$rem_colegiorec,base_remuneraci?n$rem_cuidadorrec,exclude = FALSE)
+chisq.test(remuneracion_co) #chi cuadrado, con paquete base
+#para este caso rechazo H0 con un 99% de confianza
+
+#si guardamos el test como objeto podemos obtener otros datos
+chi_remuneracion=chisq.test(remuneracion_co) 
+names(chi_remuneracion)
+chi_remuneracion$observed   # observed counts 
+chi_remuneracion$expected   # expected counts under the null
+
+#Considerando que tenemos una tabla 4x3, utilizamos V de Cramer (paquete lsr)
+cramersV(remuneracion_co) #efecto pequeno
+
+#en el caso que quiera estimar un estadistico de tamaño efecto para tabla 2x2, utilizar paquete psych: phi(x)
+
+
+###Estrategia y Tipo de colegio
+#Colegio
+base_estrategias1$colegio_rec 
+
+#Estrategia cuidador
+base_estrategias1$est_cuidador_rec
+
+#Primero miramos la variable colegio
+table(base_estrategias1$colegio_rec, exclude = FALSE) #frecuencias observadas
+prop.table(table(base_estrategias1$colegio_rec, exclude = FALSE)) #proporciones
+
+
+#Estrategias de pago segun colegio
+
+table(base_estrategias1$colegio_rec,base_estrategias1$est_cuidador_rec,exclude = FALSE) #frecuencias observadas
+prop.table(table(base_estrategias1$colegio_rec,base_estrategias1$est_cuidador_rec,exclude = FALSE),margin = 2) #proporciones columna, clases según tramos de ingresos si queremos utilizar proporciones fila: margin = 1.
+
+#puedo obtener frecuencias marginales (es el mismo resultado que pedir una tabla de frecuencia)
+margin.table(table(base_estrategias1$colegio_rec,base_estrategias1$est_cuidador_rec), 1) #variable ingresos
+margin.table(table(base_estrategias1$colegio_rec,base_estrategias1$est_cuidador_rec), 2) #variable tipolog??a
+
+#Para solicitar estadistico chi-cuadrado y tamano efecto debo guardar la tabla bivariada con frecuencias observadas como un objeto
+estrategia_co=table(base_estrategias1$colegio_rec,base_estrategias1$est_cuidador_rec,exclude = FALSE)
+chisq.test(estrategia_co) #chi cuadrado, con paquete base
+#para este caso rechazo H0 con un 99% de confianza
+
+#si guardamos el test como objeto podemos obtener otros datos
+chi_estrategia=chisq.test(estrategia_co) 
+names(chi_estrategia)
+chi_estrategia$observed   # observed counts 
+chi_estrategia$expected   # expected counts under the null
+
+#Considerando que tenemos una tabla 4x3, utilizamos V de Cramer (paquete lsr)
+cramersV(estrategia_co) #efecto pequeño
+
+#en el caso que quiera estimar un estadistico de tamano efecto para tabla 2x2, utilizar paquete psych: phi(x)
+
+
+#Grafiquemos la relacion entre ambas variables:
+
+ggplot(base_estrategias1, aes(colegio_rec,group=factor(est_cuidador_rec))) + 
+  geom_bar(aes(y = ..prop..,fill = colegio_rec),stat="count") + 
+  scale_y_continuous(labels=scales::percent,limits = c(0,1)) + labs(x="Tipo Colegio", y="Estrategia de Cuidado") +
+  scale_fill_grey() + 
+  geom_text(aes( label = scales::percent(..prop..),
+                 y= ..prop.. ), stat= "count", vjust = -.5) +
+  facet_grid(~colegio_rec,labeller = label_wrap_gen(width=10)) +
+  theme(axis.title.y=element_blank(), axis.title.x =element_text(size=12),
+        axis.text.y =element_text(size=10), axis.text.x =element_text(size=10,vjust=.8,angle=30),strip.text.x  = element_text(size = 12,face="bold"))

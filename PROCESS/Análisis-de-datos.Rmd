@@ -1,0 +1,346 @@
+---
+title: "Análisis de datos"
+output: html_document
+---
+```{r}
+pacman::p_load(dplyr, #Manipulacion de datos
+              kableExtra, #Tablas
+              ggplot2,
+              readxl,
+              haven,
+              car,
+              flextable,
+              formattable,
+              xlsx
+              ) # Información de la sesión de trabajo
+
+library(ggplot2)
+library(dplyr)
+library(car)
+library(tidyr)
+library("RColorBrewer")
+library(knitr)
+library(kableExtra)
+library(flextable)
+library(formattable)
+library(xlsx)
+library(writexl)
+```
+
+##1. Cargar y revisar base de datos
+```{r eval=TRUE, include=TRUE}
+
+base_cuidados_rec <- readxl::read_excel("../INPUT/Datos/base_cuidados_rec.xlsx")
+
+getwd()
+
+View(base_cuidados_rec)
+
+names(base_cuidados_rec)
+```
+
+##2. Tabla tareas según género
+```{r include=TRUE}
+#Crear tablas de FRP con variables de tareas de cuidado para analizar género
+##Tablas de frecuencia
+tabla_genero_comida <- table(base_cuidados_rec$comida_gen)
+tabla_genero_contencion <- table(base_cuidados_rec$contencion_gen)
+tabla_genero_tareas <- table(base_cuidados_rec$tareas_gen)
+tabla_genero_llevar <- table(base_cuidados_rec$escuela_am_gen)
+tabla_genero_traer <- table(base_cuidados_rec$escuela_pm_gen)
+tabla_genero_dormir <- table(base_cuidados_rec$dormir_gen)  
+tabla_genero_corregir <- table(base_cuidados_rec$corregir_gen)
+tabla_genero_levantar <- table(base_cuidados_rec$levantar_gen)
+tabla_genero_reemplazo <- table(base_cuidados_rec$reemplazo_gen)
+tabla_gen_cuidad<-table(base_cuidados_rec$gen_cuidad)
+
+
+
+##Tablas de FRP
+prop.table(tabla_genero_comida)*100
+prop.table(tabla_genero_contencion)*100
+prop.table(tabla_genero_tareas)*100
+prop.table(tabla_genero_llevar)*100
+prop.table(tabla_genero_traer)*100
+prop.table(tabla_genero_dormir)*100
+prop.table(tabla_genero_corregir)*100
+prop.table(tabla_genero_levantar)*100
+prop.table(tabla_genero_reemplazo)*100
+prop.table(tabla_gen_cuidad)*100
+
+#Generar tabla
+tabla_genero_tareas <- data.frame(
+  Hombre = c(0,4.44, 8.89,8.89,17.78,13.33,17.78,13.33,4.44,11.11),
+  Mujer = c(100,95.56,91.11,91.11,82.22,86.67,82.22,86.67,95.56,88.89),
+  Tareas = as.factor(c("Encargada/o", "Comida","Contención", "Tareas","Llevar","Traer","Dormir","Corrección","Levantar","Reemplazo"))
+)
+
+write.xlsx(tabla_genero_tareas, "../OUTPUT/Tablas/tabla_genero_tareas.xlsx")
+```
+
+##3. Gráfico tareas según género
+```{r, eval=TRUE, echo=TRUE}
+
+#Generar grafico
+tg_tareas <- tabla_genero_tareas %>%
+  gather("Género", "Porcentaje", -Tareas)
+
+tg_tareas
+
+display.brewer.pal(n = 6, name = 'Accent')
+
+png(filename = "../OUTPUT/Graficos/grafico_tgenero.png", width = 800, height = 800)
+
+ggplot(tg_tareas, aes(x = Tareas, y = Porcentaje, fill = Género)) +
+  geom_col(position = "dodge") +
+  theme(text = element_text(size=20),
+        axis.text.x = element_text(angle=90, hjust=1, size = 15)) +
+  scale_fill_manual(values=c("#7FC97F","#BEAED4"))
+
+```
+
+##4. Tabla rol de madre
+
+```{r, echo=TRUE}
+
+#Tablas de frecuencia de rol de madre por cada tarea
+tabla_madre_comida <- table(base_cuidados_rec$comida_mad)
+tabla_madre_contencion <- table(base_cuidados_rec$contencion_mad)
+tabla_madre_tareas <- table(base_cuidados_rec$tareas_mad)
+tabla_madre_llevar <- table(base_cuidados_rec$escuela_am_mad)
+tabla_madre_traer <- table(base_cuidados_rec$escuela_pm_mad)
+tabla_madre_dormir <- table(base_cuidados_rec$dormir_mad)  
+tabla_madre_corregir <- table(base_cuidados_rec$corregir_mad)
+tabla_madre_levantar <- table(base_cuidados_rec$levantar_mad)
+tabla_madre_reemplazo <- table(base_cuidados_rec$reemplazo_mad)
+
+#Tablas FRP por cada variable
+prop.table(tabla_madre_comida,margin = NULL)*100
+
+prop.table(tabla_madre_contencion,margin = NULL)*100
+
+prop.table(tabla_madre_tareas,margin = NULL)*100
+
+prop.table(tabla_madre_llevar,margin = NULL)*100
+
+prop.table(tabla_madre_traer,margin = NULL)*100
+
+prop.table(tabla_madre_dormir,margin = NULL)*100
+
+prop.table(tabla_madre_corregir,margin = NULL)*100
+
+prop.table(tabla_madre_levantar,margin = NULL)*100
+
+prop.table(tabla_madre_reemplazo,margin = NULL)*100
+
+
+#Generar tabla
+tabla_madre_tareas<- data.frame(
+  Madre = c(75.56,91.11,91.11,68.89,73.33,82.22,86.67,95.56,68.89),
+  Otras = c(24.44,8.89, 8.89,31.11,26.67,17.78,13.33,4.44,31.11),
+  Tareas = as.factor(c("Comida","Contención", "Tareas","Llevar","Traer","Dormir","Corrección","Levantar","Reemplazo")))
+
+View(tabla_madre_tareas)
+
+tabla_madre_tareas<-tabla_madre_tareas[c(3,1,2)]
+class(tabla_madre_tareas)
+
+tabla_mad_tareas<- kable(tabla_madre_tareas,caption = "Tabla 1: Rol de madre en tareas de cuidado", format = "html", align="c", justify = "center", omit.headings = TRUE,
+     report.nas = FALSE, full_width = F) %>% 
+     kable_styling(latex_options="scale_down",bootstrap_options = c("striped", "hover", "condensed", "responsive"))%>% 
+     add_header_above(c(" ", "¿Quién realiza la tarea?"=2))
+
+write.xlsx(tabla_madre_tareas, "../OUTPUT/Tablas/tabla_madre_tareas.xlsx")
+``` 
+
+##5. Gráfico trabajo como cuidado
+```{r, echo=TRUE}
+table(base_cuidados_rec$cuidado_trabajo)
+tabla_cuidado_trabajo <- table(base_cuidados_rec$cuidado_trabajo)
+
+tp_cuidado_trabajo <- prop.table(tabla_cuidado_trabajo)*100
+
+tp_cuidado_trabajo <- as.data.frame(tp_cuidado_trabajo)
+
+
+display.brewer.pal(n = 4, name = 'Accent')
+
+png(filename = "../OUTPUT/Graficos/grafico_tcuidado.png", width = 800, height = 600)
+ggplot(data=tp_cuidado_trabajo, aes(x=Var1, y=Freq))+
+geom_bar(stat="identity", fill=c("#FDC086", "#BEAED4", "#7FC97F"), position=position_dodge())+
+labs(y= "Porcentaje", x = "¿Considera las labores de cuidado como trabajo?")
+
+dev.off()
+
+```
+
+##6. Tabla remuneración de tareas de cuidado
+```{r, echo=TRUE}
+#Crear tablas de de tareas de cuidado para analizar remuneración
+View(base_cuidados_rec)
+
+names(base_cuidados_rec)
+
+
+tabla_rem_comida<-table(base_cuidados_rec$comida_rem)
+tabla_rem_contencion<-table(base_cuidados_rec$contencion_rem)
+tabla_rem_tareas<-table(base_cuidados_rec$tareas_rem)
+tabla_rem_llevar<-table(base_cuidados_rec$escuela_am_rem)
+tabla_rem_traer<-table(base_cuidados_rec$escuela_pm_rem)
+tabla_rem_dormir<-table(base_cuidados_rec$dormir_rem)
+tabla_rem_corregir<-table(base_cuidados_rec$corregir_rem)
+tabla_rem_levantar<-table(base_cuidados_rec$levantar_rem)
+tabla_rem_reemplazo<-table(base_cuidados_rec$reemplazo_rem)
+tabla_rem_cuidad<-table(base_cuidados_rec$remuneracion)
+
+
+
+#Crear tablas FRP por cada variable
+prop.table(tabla_rem_cuidad,margin = NULL)*100
+
+prop.table(tabla_rem_comida,margin = NULL)*100
+
+prop.table(tabla_rem_contencion,margin = NULL)*100
+
+prop.table(tabla_rem_tareas,margin = NULL)*100
+
+prop.table(tabla_rem_llevar,margin = NULL)*100
+
+prop.table(tabla_rem_traer,margin = NULL)*100
+
+prop.table(tabla_rem_dormir,margin = NULL)*100
+
+prop.table(tabla_rem_corregir,margin = NULL)*100
+
+prop.table(tabla_rem_levantar,margin = NULL)*100
+
+prop.table(tabla_rem_reemplazo,margin = NULL)*100
+
+
+#Generar tabla
+tabla_rem_tareas <- data.frame(
+  No_Remunerado= c(80, 73.33, 100, 100, 88.89, 77.78, 100, 100, 100,80),
+  Remunerado= c(20, 26.67, 0, 0, 11.11, 22.22, 0, 0, 0, 20),
+  Tareas = as.factor(c("Encargada/o", "Comida","Contención", "Tareas","Llevar","Traer","Dormir","Corrección","Levantar","Reemplazo"))
+)
+
+tabla_rem_tareas
+
+
+colnames(tabla_rem_tareas) <- c("No Remunerado", "Remunerado","Tareas")
+tabla_rem_tareas<-tabla_rem_tareas[c(3,2,1)]
+
+
+tabla_rtareas<- knitr::kable(tabla_rem_tareas,caption = "Tabla 2: Remuneración de tareas de cuidado", format = "html", align="c", justify = "center", omit.headings = TRUE,
+     report.nas = FALSE, full_width = F) %>% 
+     kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+ 
+
+write_xlsx(tabla_rem_tareas, "../OUTPUT/Tablas/tabla_rem_tareas.xlsx")
+```
+
+##7. Tabla remuneración de cuidado según NSE de la escuela
+```{r, echo=TRUE}
+
+tabla3<-table(base_cuidados_rec$nse_colegio,base_cuidados_rec$remuneracion)
+
+tabla_rcuid_nse<-knitr::kable(tabla3,caption = "Tabla 3: Remuneración de cuidado según nivel socioeconómico de la escuela", format = "html", align="c", justify = "center", omit.headings = TRUE,
+     report.nas = FALSE, full_width = F) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>% 
+     add_header_above(c("","Remuneración del cuidado"=2))
+
+```
+ 
+##8. Tabla estretagias de cuidado 
+```{r, echo=TRUE}
+##Encargada/o del cuidado
+
+tabla_est_cuidado <- table(base_cuidados_rec$gen_cuidad,base_cuidados_rec$remuneracion)
+
+tabla_est_comida <- table(base_cuidados_rec$comida_gen,base_cuidados_rec$comida_rem)
+
+tabla_est_contencion <- table(base_cuidados_rec$contencion_gen,base_cuidados_rec$contencion_rem)
+
+tabla_est_tareas <- table(base_cuidados_rec$tareas_gen,base_cuidados_rec$tareas_rem)
+
+tabla_est_llevar <- table(base_cuidados_rec$escuela_am_gen,base_cuidados_rec$escuela_am_rem)
+
+tabla_est_traer <- table(base_cuidados_rec$escuela_pm_gen,base_cuidados_rec$escuela_pm_rem)
+
+tabla_est_dormir <- table(base_cuidados_rec$dormir_gen,base_cuidados_rec$dormir_rem)
+
+tabla_est_corregir <- table(base_cuidados_rec$corregir_gen,base_cuidados_rec$corregir_rem)
+
+tabla_est_levantar <- table(base_cuidados_rec$levantar_gen,base_cuidados_rec$levantar_rem)
+
+tabla_est_reemplazo <- table(base_cuidados_rec$reemplazo_gen,base_cuidados_rec$reemplazo_rem)
+
+
+#FRP de estrategias de cuidado
+prop.table(tabla_est_cuidado,margin = NULL)*100
+
+prop.table(tabla_est_comida,margin = NULL)*100
+
+prop.table(tabla_est_contencion,margin = NULL)*100
+
+prop.table(tabla_est_tareas,margin = NULL)*100
+
+prop.table(tabla_est_llevar,margin = NULL)*100
+
+prop.table(tabla_est_traer,margin = NULL)*100
+
+prop.table(tabla_est_dormir,margin = NULL)*100
+
+prop.table(tabla_est_corregir,margin = NULL)*100
+
+prop.table(tabla_est_levantar,margin = NULL)*100
+
+prop.table(tabla_est_reemplazo,margin = NULL)*100
+
+
+#Generar tabla
+tabla_estrategias <- data.frame(
+  Mujer_No_Remunerada= c(80, 71.11, 91.11, 91.11, 73.33, 73.33, 82.22, 86.67, 95.56, 71.11),
+  Mujer_Remunerada= c(20,24.44, 0, 0, 8.89, 13.33, 0, 0, 0, 17.78),
+  Hombre_No_Remunerado= c(0,2.22, 8.89, 8.89, 15.56, 4.44,17.78,13.33, 4.44, 8.89),
+  Hombre_Remunerado= c(0,2.22, 0, 0, 2.22, 8.89, 0, 0, 0, 2.22),
+  Tareas = as.factor(c("Encargada/o", "Comida","Contención", "Tareas","Llevar","Traer","Dormir","Corrección","Levantar","Reemplazo"))
+)
+
+tabla_estrategias
+
+tabla_estrategias<-tabla_estrategias[c(5,1,2,3,4)]
+
+colnames(tabla_estrategias) <- c("Tareas", "No Remunerada","Remunerada", "No remunerado", "Remunerado")
+
+tabla_estrat<-knitr::kable(tabla_estrategias,caption = "Tabla 4: Estrategias de cuidado", format = "html", align="c", justify = "center", omit.headings = TRUE,
+     report.nas = FALSE, full_width = F) %>% 
+     kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive", position = "left")) %>% 
+     add_header_above(c(" ", "Mujer" = 2, "Hombre" = 2))
+
+write.xlsx(tabla_estrategias, "../OUTPUT/Tablas/tabla_estrategias.xlsx")
+```
+ 
+##9. Tabla estrategias según NSE
+```{r, echo=TRUE}
+#Crear variable "Estrategias de cuidado"
+
+base_cuidados_rec$estrategias_cp
+
+#Tabla de contingencia estrategias de cuidado y nivel socioeconómico del colegio
+
+tabla5<-table(base_cuidados_rec$nse_colegio,base_cuidados_rec$estrategias_cp)
+
+colnames(tabla5) <- c("Mujer no remunerada", "Mujer remunerada")
+
+tabla_est_nse <- knitr::kable(tabla5,caption = "Tabla 5: Estrategias de cuidado según nivel socioeconómico", format = "html", align="c", justify = "center", omit.headings = TRUE,
+     report.nas = FALSE, full_width = F) %>% 
+     kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive", position = "left")) %>% 
+     add_header_above(c(" ", "Estrategias"=2))
+
+write.xlsx(tabla5, "../OUTPUT/Tablas/tabla_est_nse.xlsx")
+```
+
+##10. Información de la sesión de R
+```{r, echo=TRUE}
+sessionInfo() 
+```

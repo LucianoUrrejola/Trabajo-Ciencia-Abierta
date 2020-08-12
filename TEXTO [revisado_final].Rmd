@@ -1,0 +1,788 @@
+---
+title: "Entrega 1: Documento dinámico RMarkdown"
+author: "Javiera Abreu, Alejandra Delaveau Bascopé, Luciano Urrejola"
+date: "26/5/2020"
+output:
+  html_document:
+     theme: flatly
+     highlight: tango
+     toc: true
+     toc_float: false
+     toc_depth: 4
+     number_sections: false
+     code_folding: show
+csl: INPUT/Bibliografia/apa.csl
+linkcolor: blue
+bibliography: INPUT/Bibliografia/Tr.bib
+link_citations: yes
+---
+
+Universidad de Chile\
+Facultad de Ciencias Sociales\
+Carrera de Sociología\
+Estrategias de Investigación Cuantitativa\
+Profesor: Maria Constanza Ayala\
+Ayudante: Camila Ortiz\
+
+
+
+
+
+
+
+
+<div style="text-align: justify">
+
+<center>
+# *Y ahora, ¿con quién dejamos a las niñas, niñes y niños?*\
+Trabajo de investigación sobre las estrategias de cuidado infantil según género y clase social en colegios "Escuela Carlos Pezoa Véliz", "Peter College" y "Saint George"
+</center>\
+*Integrantes:* Josefina Carrasco, Javiera Carvajal, Alejandra Deleaveau, Valentina González, Catalina Flores, Valentina Martínez
+
+Santiago, 12 de enero, 2019.
+
+\
+
+## *1. Resumen*
+
+El cuidado hace referencia a una labor necesaria para procurar el bienestar cotidiano y, por ello, posee un carácter esencial. Por ende, “el cuidado será siempre una condición existencial de las personas, para la perpetuidad de la especie y grupo social” [@are2006], bajo la sociedad patriarcal generalizada globalmente, a lo largo de la historia y en la actualidad, este se encuentra relegado principalmente a la mujer. Es por esto que se vuelve importante estudiar las estrategias de cuidado que eligen las mujeres al momento de tener hijos/as.
+
+\
+
+## *2. Marco Teórico*
+
+### *Conceptos utilizados:*
+
+Para el análisis se utilizan los conceptos de clase social, género, cuidado y estrategias de cuidado.
+
+#### *1. Clase social*\
+A partir de la revisión bibliográfica, se puede notar la influencia de la clase social respecto a las condiciones del cuidado infantil. En tal sentido, las estrategias de cuidado, es decir, la delimitación de quién y cómo se harán cargo del cuidado del niño/a, están condicionadas económicamente. Según @can2018, este condicionamiento se relaciona con el poder de adquisición y las oportunidades percibidas. Mientras que personas provenientes de clase alta pueden optar a redes institucionales, como colegios y salas cunas, las personas de estratos socioeconómicos más bajos tienden a un mayor malestar, pues la mayoría debe cumplir una doble jornada laboral (trabajo pagado y reproductivo) al mismo tiempo en que lidian con patrones desiguales del reparto del trabajo dentro del hogar.
+De acuerdo con el perfil de cuidadora según clase social, @vaq2010 afirman que las personas que asumen el papel de cuidador/a principal son mujeres, en su mayoría, sin empleo, de menos nivel educativo, responsable de tareas domésticas, de clase social baja, y que ejerce actividades de prevención respecto a la salud familiar y que no solo cuida, sino que apoya y ayuda a otras mujeres en el cuidado.
+Se entenderá clase social como posición las personas dentro del espacio social según su lugar en el sistema económico [@web1993]. Operativamente, en el presente trabajo estará dada por el nivel de ingresos y de escolariadad de las y los apoderados del establecimiento educacional y el porcentaje de niñas y niños en condición de vulnerabilidad. Siendo alto un establecimiento en que “La mayoría de los apoderados ha declarado tener 16 o más años de escolaridad y un ingreso del hogar de \$1.460.001 o más.” y “9% o menos de los estudiantes se encuentra en condición de vulnerabilidad social.”; medio uno en que “La mayoría de los apoderados ha declarado tener entre 12 y 13 años de escolaridad y un ingreso del hogar que varía entre \$490.001 y \$740.000.” y “Entre 36,01% y 54% de los estudiantes se encuentra en condición de vulnerabilidad social.” ; y bajo un establecimiento que “La mayoría de los apoderados ha declarado tener entre 10 y 11 años de escolaridad y un ingreso del hogar que varía entre \$290.001 y $460.000.” y “Entre 57,01% y 75% de los estudiantes se encuentra en condición de vulnerabilidad social.” (Agencia de Calidad de la Educación, 2017)
+
+#### *2. Género*\
+En torno al concepto de género, @kir1987 realiza una distinción entre género y sexo, haciendo una crítica a la forma unificada en que se han entendido estos términos, lo que implica comportamientos y decisiones materializadas en una noción desigual. En tal sentido, afirma que sexo “es un término biológico y género es un término psicológico y cultural”, por lo que corresponde referirse al género en tanto categoría cultural que norma el comportamiento de hombres y mujeres. 
+Para @vaq2010 el “rol reproductivo de la mujer está basado en relaciones del afecto y actividades domésticas, dentro de la estructura familiar, mientras que el hombre posee un rol productivo y hegemónico en la dinámica económica familiar”. En esta misma línea, la familia y las funciones atribuidas a esta (social, educativa, laboral y de poder) han sido fundamentales para entender a la mujer como la persona que asume el rol de cuidado, en su calidad de madre, esposa o hija, y en la que parecen aflorar sentimientos de obligación por parte de estas, sobre todo de la mujer-madre [@fer2013], dificultando una distribución equitativa, en cuanto a género, de las tareas propias del cuidado y la elección de estrategias. Inclusive, cuando hay un intercambio en los roles de cuidado, se mantiene la figura de una mujer que guía al hombre en las tareas del cuidado familiar [@tor2008].
+
+#### *3. Cuidado*\
+Tras la revisión literaria, podemos establecer que cuidado se configura como un eje principal del problema a investigar. Por un lado, es posible abarcarlo a modo de problema social, donde se define como una actividad que cumple funciones socioeconómicas, construidas de manera histórica y donde se asignan una serie de tareas y roles en función del género y la posición socioeconómica de las personas [@esq2012]. Por otro lado, remite a una actividad que demanda un nivel de involucramiento emocional y personal entre el cuidador y el/la niñx, contando con un mínimo de vínculos sociales y afectivos, lo que nos daría pie para considerar esta variable a estudiar desde una perspectiva pluridimensional en tanto se considera como “una labor (como un trabajo) con obligaciones y responsabilidades (en un sentido normativo) y una actividad que involucra costos emocionales y financieros” [@arm2016].
+Según @upb2017, el cuidado infantil consiste en la “práctica, remunerada o no, mediante la cual se ayuda al niño o niña en el logro de su bienestar y en el desarrollo de su vida cotidiana”. También se reconocen la presencia de redes que existen para el cuidado. Así, tanto para cuidadoras o cuidadores principales como para el apoyo en “figuras subsidiarias”, las redes (de tipo familiar, institucional o vecinal) son fundamentales.
+
+#### *4. Estrategias de cuidado*\
+  "Son aquellas decisiones y prácticas en la esfera de la reproducción relativas a la canalización diaria del cuidado a los miembros del hogar y el trabajo doméstico que necesariamente están intrínsecamente imbricadas en el ámbito de la producción [@hum1994] y moduladas por una multiplicidad de factores estructurales en interacción, incluyendo el género, la clase social, la etnia, el ámbito geográfico, el contexto histórico, así como las políticas del estado del bienestar o las condiciones que ofrece el mercado de trabajo [@cro2007]." [@san2011].
+En síntesis, se han podido reconocer algunos elementos del campo de estudio fundamentales para la presente investigación. Estos coinciden en que el cuidado es una tarea adscrita, principalmente, al género femenino, a pesar del paulatino aumento e implicancia en el cuidado por parte de hombres [@jim2018]. Por otra parte, al hacer una comparación entre el tiempo dedicado al cuidado, de acuerdo con el género, los estudios dan cuenta que cuando la labor es encargada a mujeres, tanto la frecuencia como la carga de trabajo asumida es mayor en relación con la ejercida por hombres [@lar2008].
+El pensamiento feminista ha mostrado que las tareas de atención y cuidado de la vida de las personas son imprescindibles para la reproducción social y el bienestar cotidiano de las personas [@carr2011].
+Las estrategias de cuidado, en tanto todas aquellas prácticas y decisiones relativas al cuidado de una persona, se definen operacionalmente en el presente estudio en relación los tipos de personas que se hacen cargo de las tareas de cuidado o del cuidado en general según su género y la remuneración, estableciéndose cuatro tipos de estrategia: “Mujer con remuneración”, “Mujer sin remuneración”, “Hombre con remuneración” y “Hombre sin remuneración”.
+
+\
+
+## *3. Pregunta y objetivos de investigación*
+
+### *Pregunta de investigación*
+
+¿Cuáles son las diferencias en las estrategias de cuidado respecto a los niños/as que eligen las mujeres apoderadas de los colegios "Escuela Carlos Pezoa Véliz", "Peter College" y "Saint George College"?
+
+### *Objetivo General*
+
+Comparar las diferencias en las estrategias de cuidado a los niños/as que eligen las mujeres de acuerdo a la clase social, en los colegios "Escuela Carlos Pezoa Véliz", "Peter College" y "Saint George's College".
+
+### *Objetivos específicos*
+
+1. Identificar el género de la persona que se hace cargo del cuidado y de quién decide sobre la estrategias de cuidado, según clase social, a partir de la caracterización socio-económica de los colegios Saint George, Peter College y Escuela Carlos Pezoa Véliz.\
+2. Identificar la relación con el niño de la persona que se hace cargo del cuidado, al igual que identificar si estas perciben las labores de cuidado como un trabajo.\
+3. Identificar la relación entre clase social y trabajo de cuidado remunerado, además de identificar qué tipo de tareas relacionadas al cuidado son remuneradas.\
+4. Identificar la relación entre característica socioeconómicas de los colegios y tipos de estrategias de cuidado, entendidas en base al género y la remuneración.\
+
+
+## *4. Hipótesis*
+
+La hipótesis correspondiente al objetivo general es la siguiente: Las estrategias de cuidado variarán según la característica socioeconómica de los colegios; es decir, en el colegio caracterizado como nivel socioeconómico bajo las mujeres optarán a estrategias de cuidado no remunerado, mientras que en el colegio de nivel alto las estrategias de cuidado infantil que predominarán son las remuneradas. Sin embargo, se cree que la persona que, principalmente, está encargada del cuidado transversalmente será una mujer, mientras que los hombres sólo harán tareas asistenciales.
+
+1. Respecto del primer objetivo específico, se espera que la persona que se hace cargo del cuidado al igual que la persona que decide las estrategias de cuidado sea del género femenino, independientemente de la caracterización socioeconómica del colegio. Esto debido a que el rol de género que asume la mujer [@vaq2010] está basado en relaciones de afecto y actividades domésticas dentro de la estructura familiar. En esta misma línea, la familia y las funciones atribuidas a esta (social, educativa, laboral y de poder) han sido fundamentales para entender a la mujer como la persona que asume el rol de cuidado, en su calidad de madre, esposa, abuela o hija. Presentándose la mujer, entonces, como la cuidadora principal, el rol del hombre pasa a ser tan solo asistencial en la mayoría de los escenarios, teniendo variaciones de acuerdo con la clase social a la que pertenece. Además, la figura del/la cuidador/a principal en tanto eje central en el sistema familiar en la medida en que se hace cargo del cuidado se involucra, finalmente, con otras personas y, a su vez, asumen el deterioro de lo que significa hacerse cargo de esta tarea.
+
+2. En relación al objetivo 2, se espera que las personas que, primordialmente, se hacen cargo de los cuidados del niño sean sus madres y/o abuelas, al igual que se espera que éstas no consideren como trabajo las tareas provenientes del cuidado del niño, más bien como parte de su "rol de madre". [@upb2017], se reconoce la presencia de redes (de tipo familiar, institucional o vecinal) que existen para el cuidado tanto para cuidadoras o cuidadores principales como para el apoyo en "figuras subsidiarias", siendo fundamental el apoyo que brinda la abuela, y que se gesta a partir de la sensación de "obligación" que tienen respecto a la situación del cuidado. 
+ 
+3. En torno al tercer objetivo específico, se espera que sea mayor la remuneración del cuidado en el colegio socioeconímico alta, mientras que en los colegios de clase media y media baja estas cifras sean bajas o nulas. A su vez, se espera que algunas tareas relacionadas con el cuidado sean remuneradas, tales como llevar a los niños a la escuela, mientras que otras tareas como bañarlos o hacerlos dormir no lo sean. Según @fla2014 hay tres tipos de cuidado: *cuidado formal*, que hace referencia a "formas de cuidado reguladas en función de las condiciones fijadas por un marco jurídico"; *informal*, que  corresponde a la actividad que no está regulada, no se encuentran dentro del marco jurídico establecido por el estado, el mercado, la sociedad o la familia, estos pueden ser con o sin remuneración; *semiformal*, que refiere a formas reguladas del cuidado pero que no corresponden a un empleo remunerado formal, por ejemplo, cuando existe apoyo económico estatal frente al cuidado.
+
+4. Finalmente, en relación con el último objetivo, se espera que los establecimientos presenten distintas estrategias de cuidado entendidas en base al género y la remuneración, con una carga en relación con el rol de madre. Se espera que, en todos los establecimientos, exista coincidencia en la dimensión de género de la estrategia, optando la mayoría de las apoderadas por mujeres -considerándose a ellas mismas- para encargarse principalmente del cuidado, aunque variando en la clase alta, en la cual se reconocerá una proporción baja de hombres a cargo del cuidado. Por otra parte, mientras que las mujeres de clase alta optarán, en parte, por "Mujer con remuneración", las de clase media lo harán en menor proporción y las de clase media-baja, principalmente, optarán por la estrategia "Mujer sin remuneración". Estas diferencias serán significativas estadísticamente, es decir, tanto a nivel muestral como poblacional podrán reconocerse (bajo el falso supuesto de muestreo probabilístico) a partir de la revisión bibliogrífica, la cual indica que las estrategias de cuidado, es decir, la delimitación de quién y cómo se harán cargo del cuidado de la/el menor, están condicionadas económicamente; existen distinciones de clase para las estrategias de cuidado, entendiendo las clases según la operacionalización de Cano (2018), quien indica que son los profesionales quienes cuentan con más recursos provenientes de su mejor ubicación dentro del mercado laboral, ya que pueden optar a redes institucionales como colegios y sala cunas, además de redes informales. Además, cuentan con ventajas a nivel del trabajo, puesto que tienen beneficios, como lo es el fuero maternal, y que va disminuyendo a medida que se desciende en la escala social, evidenciándose un mayor malestar, pues gran parte, en el caso de las mujeres, debe cumplir una doble jornada laboral al mismo  al mismo tiempo en que lidian con patrones desiguales del reparto del trabajo dentro del hogar.
+
+\
+
+## *5. Diseño Metodológico*
+
+De acuerdo con la pregunta de investigación y los objetivos correspondientes planteados anteriormente, las variables a utilizar serán las estrategias de cuidado, la clase social y el género. Teniendo en cuenta los objetivos del estudio, se puede clasificar la investigación como correlacional, pues la mayoría de los objetivos esbozados apuntan a relacionar las características de las estrategias de cuidado en relación al género y a la clase social, develando la manera en que se manifiestan estos hechos por medio de las presentes variables dependientes e independiente, respectivamente. 
+Para responder nuestras hipótesis y objetivos de investigación se recogió información durante los meses de noviembre y diciembre del 2018 mediante la aplicación de encuestas a una muestra de 45 mujeres apoderadas de tres colegios de distintas comunas de Santiago, donde en cada colegio se aplicaron las encuestas a 15 mujeres con el objetivo de tener la misma cantidad de madres y así poder comparar los resultados finales entre los colegios. Los colegios son la "Escuela Carlos Pezoa Véliz", "Peter College" y "Saint George College" de las comunas de Quinta Normal, Cerrillos y Vitacura, respectivamente. Se seleccionó a estos colegios puesto que están clasificados como medio-bajo, medio-alto y alto, respectivamente, según la Agencia de Calidad de la Educación perteneciente al MINEDUC, en base a criterios de vulnerabilidad de las/os niñas/os e ingreso y nivel educacional alcanzado de las/os apoderadas/os. La selecciún de la muestra y la posterior recolección de datos no fueron realizadas a través de un muestreo aleatorio o probabilístico, sino que más bien fueron elegidos según los criterios teóricos. En primer lugar, basándose en la representatividad de grupos, entendiendo por esto a la clase social, la cual se vincula con las personas y familias que conforman lo que es el contorno de la comunidad educacional. En segundo lugar, en base al criterio de accesibilidad para el grupo de investigación, considerando redes y recursos de este mismo. No obstante, cabe destacar que hubo algunos obstáculos durante el proceso de selección de la muestra, puesto que había un tiempo limitado para aplicar las encuestas, especialmente a causa de la finalización del período académico de los colegios, y también debido a las dificultades administrativas que presentaban algunos colegios. 
+A las apoderadas de la "Escuela Carlos Pezoa Véliz" se les entregó la encuesta presencialmente, mientras que a las madres apoderadas de los colegios "Peter College" y "Saint George College" se les envió la encuesta mediante formulario de cuestionarios Google. Se desprende, por tanto, que se trata de un estudio con metodología observacional, pues se medirán las variables de interés intentando no influir en las respuestas de las personas a quienes se dirige el estudio, teniendo un nivel de control que no va más allá de las variables que puede abarcar cada respuesta
+Respecto a las limitaciones del diseño metodológico de la investigación, en primer lugar, respecto al uso de estadísticos inferenciales, al no utilizar un muestreo probabilístico para la seleccionar la muestra, se imposibilita la extrapolación de los resultados al total de la población. Esto son válidos únicamente para la muestra, en este caso, para los apoderados de los colegios "Escuela Carlos Pezoa Véliz", "Colegio Excelsior" y "Saint George College". Aún así, se realizarán las inferencias poblacionales sin que estas, necesariamente, representen a la población con un nivel de confianza determinado. 
+Otra limitación que se mantuvo durante el diseño metodolígico de la investigación es que en su mayoría las variables son nominales, por lo que no se podrá analizar las medidas de tendencia central para éstas; más bien, sólo se podrá hacer mediante una tabla de frecuencias; a su vez, como la variable ingreso está dividida en tramos tampoco se podrá sacar un promedio exacto de cuánto ingresos recibe la población de la muestra.
+
+\
+
+## *6. Resultados*
+
+Para los presentes resultados, dado que el muestreo no fue aleatorio probabilístico, las inferencias poblacionales que se realizan en el análisis no tienen certeza con el nivel de confianza aplicado, sino que solamente poseen un valor analítico y representan a la muestra seleccionada. Aun así, estos resultados pueden ser corroborados con información desde muestras aleatorias en la posteridad.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_knit$set(root.dir= normalizePath('..'))
+knitr::opts_chunk$set(error = FALSE)
+knitr::opts_chunk$set(cache=FALSE, # guarda renderizaciones parciales, ahorra tiempo
+                      warning = FALSE, # evita publicar advertencias
+                      message = FALSE) # evita publicar mensajes
+
+Sys.setlocale("LC_ALL","ES_ES.UTF-8") # para temas de caracteres en español, recomendable
+```
+
+```{r include=FALSE}
+
+pacman::p_load(dplyr, #Manipulacion de datos
+              kableExtra, #Tablas
+              ggplot2,
+              readxl,
+              haven,
+              car,
+              flextable,
+              formattable
+              ) # Información de la sesión de trabajo
+
+library(ggplot2)
+library(dplyr)
+library(car)
+library(tidyr)
+library("RColorBrewer")
+library(knitr)
+library(kableExtra)
+library(flextable)
+library(formattable)
+
+
+base_cuidados <- read_excel("Trabajo Ciencia Abierta/INPUT/Datos/base_cuidados_2018.xlsx") 
+#Cambiar por base cuidados rec
+
+```
+
+\
+
+### *a. Género*
+
+En primer lugar, se presenta el gráfico 1 para identificar la relación entre género y cuidado según las tendencias en las estrategias de cuidado de cada familia, en general.
+
+```{r, include=FALSE}
+
+#Eliminar todo el tratamiento de datos
+View(base_cuidados)
+
+names(base_cuidados)
+
+#Recodificaciones
+
+#Seleccionamos las variables que vamos a presentar en los resultados
+base_cuidados_rec<-base_cuidados[c("p1", "p10", "p12", "p14_a_1", "p14_a_2", "p14_b_1", "p14_b_2",
+                             "p14_c_1", "p14_c_2", "p14_d_1", "p14_d_2","p14_e_1",
+                             "p14_e_2","p14_f_1","p14_f_2","p14_g_1","p14_g_2", "p14_h_1",
+                             "p14_h_2", "p14_l_1","p14_l_2", "p15")] 
+
+names(base_cuidados_rec)
+View(base_cuidados_rec)
+
+#Renombramos las variables
+base_cuidados_rec <- rename(base_cuidados_rec, c("nse_colegio"=p1,"remuneracion"=p10,
+                                                "gen_cuidad"=p12, "comida_per"=p14_a_1, 
+                                                "comida_rem"=p14_a_2,"contencion_per"=p14_b_1,
+                                                "contencion_rem"=p14_b_2,
+                                                "tareas_per"=p14_c_1, "tareas_rem"=p14_c_2,
+                                                "escuela_am_per"=p14_d_1,
+                                                "escuela_am_rem"=p14_d_2,
+                                                "escuela_pm_per"=p14_e_1,
+                                               "escuela_pm_rem"=p14_e_2,
+                                                "dormir_per"=p14_f_1,
+                                                "dormir_rem"=p14_f_2,
+                                                "corregir_per"=p14_g_1,"corregir_rem"=p14_g_2,
+                                                "levantar_per"=p14_h_1,
+                                                "levantar_rem"=p14_h_2,
+                                                "reemplazo_per"=p14_l_1,
+                                                "reemplazo_rem"=p14_l_2, 
+                                                "cuidado_trabajo"=p15))
+
+#Revisamos que se hayan cambiado los nombres
+names(base_cuidados_rec)
+
+#Recodificamos las respuestas de variables generales
+
+##Nivel socioeconómico del colegio
+base_cuidados_rec <- base_cuidados_rec %>% mutate(nse_colegio=dplyr::recode(nse_colegio, 
+                         `1`="Medio-bajo",
+                         `2`="Medio",
+                         `3`="Alto"))
+
+##Remuneración de cuidadora/or principal
+base_cuidados_rec <- base_cuidados_rec %>% mutate(remuneracion=dplyr::recode(remuneracion, `1` = "No remunerado", `2` = "Remunerado", `3` = "Remunerado",`4` = "No remunerado"))
+
+
+##rem cuidadora/or principal
+base_cuidados_rec <- base_cuidados_rec %>% mutate(gen_cuidad=dplyr::recode(gen_cuidad, `1` = "Hombre", `2` = "Mujer", `99` = "NA"))
+
+##Cuidado como trabajo
+base_cuidados_rec <- base_cuidados_rec %>% mutate(cuidado_trabajo=dplyr::recode(cuidado_trabajo, `1` = "Si", `2` = "No", `99` = "NA"))
+
+#---
+  
+#Recodificamos las respuestas de variables sobre género 
+##Comida
+base_cuidados_rec <- base_cuidados_rec %>% mutate(comida_gen=dplyr::recode(comida_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Contención
+base_cuidados_rec <- base_cuidados_rec %>% mutate(contencion_gen=dplyr::recode(contencion_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Tareas
+base_cuidados_rec <- base_cuidados_rec %>% mutate(tareas_gen=dplyr::recode(tareas_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Llevar escuela
+base_cuidados_rec <- base_cuidados_rec %>% mutate(escuela_am_gen=dplyr::recode(escuela_am_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+##Traer escuela
+base_cuidados_rec <- base_cuidados_rec %>% mutate(escuela_pm_gen=dplyr::recode(escuela_pm_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Dormir
+base_cuidados_rec <- base_cuidados_rec %>% mutate(dormir_gen=dplyr::recode(dormir_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Corregir
+base_cuidados_rec <- base_cuidados_rec %>% mutate(corregir_gen=dplyr::recode(corregir_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Levantar
+base_cuidados_rec <- base_cuidados_rec %>% mutate(levantar_gen=dplyr::recode(levantar_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Reemplazo
+base_cuidados_rec <- base_cuidados_rec %>% mutate(reemplazo_gen=dplyr::recode(reemplazo_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+#---
+
+#Recodificamos las respuestas de variables sobre remuneración 
+##Comida
+base_cuidados_rec <- base_cuidados_rec %>% mutate(comida_rem=dplyr::recode(comida_rem, `1` = "Si", `2` = "No"))
+
+##Contención
+base_cuidados_rec <- base_cuidados_rec %>% mutate(contencion_rem=dplyr::recode(contencion_rem, `1` = "Si", `2` = "No"))
+
+##Tareas
+base_cuidados_rec <- base_cuidados_rec %>% mutate(tareas_rem=dplyr::recode(tareas_rem, `1` = "Si", `2` = "No"))
+
+##Llevar escuela
+base_cuidados_rec <- base_cuidados_rec %>% mutate(escuela_am_rem=dplyr::recode(escuela_am_rem,`1` = "Si", `2` = "No"))
+
+##Traer escuela
+base_cuidados_rec <- base_cuidados_rec %>% mutate(escuela_am_rem=dplyr::recode(escuela_am_rem, `1` = "Si", `2` = "No"))
+
+##Dormir
+base_cuidados_rec <- base_cuidados_rec %>% mutate(dormir_rem=dplyr::recode(dormir_rem, `1` = "Si", `2` = "No"))
+
+##Corregir
+base_cuidados_rec <- base_cuidados_rec %>% mutate(corregir_rem=dplyr::recode(corregir_rem, `1` = "Si", `2` = "No"))
+
+##Levantar
+base_cuidados_rec <- base_cuidados_rec %>% mutate(levantar_rem=dplyr::recode(levantar_rem, `1` = "Si", `2` = "No"))
+
+##Reemplazo
+base_cuidados_rec <- base_cuidados_rec %>% mutate(reemplazo_rem=dplyr::recode(reemplazo_rem, `1` = "Si", `2` = "No"))
+
+```
+
+
+```{r include=FALSE}
+
+View(base_cuidados_rec)
+
+names(base_cuidados_rec)
+
+#Crear tablas de FRP con variables de tareas de cuidado para analizar género
+##Tablas de frecuencia
+tabla_genero_comida <- table(base_cuidados_rec$comida_gen)
+tabla_genero_contencion <- table(base_cuidados_rec$contencion_gen)
+tabla_genero_tareas <- table(base_cuidados_rec$tareas_gen)
+tabla_genero_llevar <- table(base_cuidados_rec$escuela_am_gen)
+tabla_genero_traer <- table(base_cuidados_rec$escuela_pm_gen)
+tabla_genero_dormir <- table(base_cuidados_rec$dormir_gen)  
+tabla_genero_corregir <- table(base_cuidados_rec$corregir_gen)
+tabla_genero_levantar <- table(base_cuidados_rec$levantar_gen)
+tabla_genero_reemplazo <- table(base_cuidados_rec$reemplazo_gen)
+tabla_gen_cuidad<-table(base_cuidados_rec$gen_cuidad)
+
+
+
+##Tablas de FRP
+prop.table(tabla_genero_comida)*100
+prop.table(tabla_genero_contencion)*100
+prop.table(tabla_genero_tareas)*100
+prop.table(tabla_genero_llevar)*100
+prop.table(tabla_genero_traer)*100
+prop.table(tabla_genero_dormir)*100
+prop.table(tabla_genero_corregir)*100
+prop.table(tabla_genero_levantar)*100
+prop.table(tabla_genero_reemplazo)*100
+prop.table(tabla_gen_cuidad)*100
+
+#Generar tabla
+tabla_genero_tareas <- data.frame(
+  Hombre = c(0,4.44, 8.89,8.89,17.78,13.33,17.78,13.33,4.44,11.11),
+  Mujer = c(100,95.56,91.11,91.11,82.22,86.67,82.22,86.67,95.56,88.89),
+  Tareas = as.factor(c("Encargada/o", "Comida","Contención", "Tareas","Llevar","Traer","Dormir","Corrección","Levantar","Reemplazo"))
+)
+
+```
+
+
+```{r, include=FALSE}
+#Generar grafico
+tg_tareas <- tabla_genero_tareas %>%
+  gather("Género", "Porcentaje", -Tareas)
+
+tg_tareas
+
+display.brewer.pal(n = 6, name = 'Accent')
+```
+
+Gráfico 1
+```{r, echo=TRUE}
+ggplot(tg_tareas, aes(x = Tareas, y = Porcentaje, fill = Género)) +
+  geom_col(position = "dodge") +
+  theme(text = element_text(size=20),
+        axis.text.x = element_text(angle=90, hjust=1, size = 15)) +
+  scale_fill_manual(values=c("#7FC97F","#BEAED4"))
+
+
+```
+
+ 
+Según los datos observados, las mujeres son quienes se hacen cargo mayoritariamente tanto del cuidado de los/as niños/as como de la planificación de este. El primer punto se expresa en que quienes se hacen cargo del cuidado principalmente (cuidador o cuidadora principal) son mujeres en un 100%. Los niveles más altos de participación masculina en tareas de cuidado se concentran en llevar y recoger de la escuela (17,78% y 13,33% respectivamente), junto con hacer dormir a el/la niño/a (13,33%). Las mujeres, por su parte, son las que se hacen cargo mayoritariamente, en toda la muestra, de todas las tareas, encontrando el nivel más bajo de participación en las tareas de llevar a la escuela y hacer dormir (82,22% ambas), siendo este, de todas formas, considerablemente mayor al de participación masculina en las tareas. Debido a estos resultados es que se puede afirmar que independiente a la clase social las mujeres son quienes se hacen cargo del cuidado. No se puede hacer prueba de hipótesis de chi-cuadrado para ver la relación entre las variables debido a que el 100% de las personas que se hacen cargo del cuidado son mujeres, por lo que no se cumplen los requisitos para la prueba.
+
+\
+
+### *b. Rol de madre*
+
+```{r, include=FALSE}
+
+#Recodificar variables
+##Comida
+base_cuidados_rec$comida_mad <- ifelse(base_cuidados_rec$comida_per=='1'| base_cuidados_rec$comida_per=='5',"Madre","Otra")
+
+##Contención
+base_cuidados_rec$contencion_mad <- ifelse(base_cuidados_rec$contencion_per=='1'| base_cuidados_rec$contencion_per=='5',"Madre","Otra")
+
+##Tareas
+base_cuidados_rec$tareas_mad <- ifelse(base_cuidados_rec$tareas_per=='1'| base_cuidados_rec$tareas_per=='5',"Madre","Otra")
+
+##Llevar escuela
+base_cuidados_rec$escuela_am_mad <- ifelse(base_cuidados_rec$escuela_am_per=='1'| base_cuidados_rec$escuela_am_per=='5',"Madre","Otra")
+
+##Traer escuela
+base_cuidados_rec$escuela_pm_mad <- ifelse(base_cuidados_rec$escuela_pm_per=='1'| base_cuidados_rec$escuela_pm_per=='5',"Madre","Otra")
+
+##Dormir
+base_cuidados_rec$dormir_mad <- ifelse(base_cuidados_rec$dormir_per=='1'| base_cuidados_rec$dormir_per=='5',"Madre","Otra")
+
+##Corregir
+base_cuidados_rec$corregir_mad <- ifelse(base_cuidados_rec$corregir_per=='1'| base_cuidados_rec$corregir_per=='5',"Madre","Otra")
+
+##Levantar
+base_cuidados_rec$levantar_mad <- ifelse(base_cuidados_rec$levantar_per=='1'| base_cuidados_rec$levantar_per=='5',"Madre","Otra")
+
+##Reemplazo
+base_cuidados_rec$reemplazo_mad <- ifelse(base_cuidados_rec$reemplazo_per=='1'| base_cuidados_rec$reemplazo_per=='5',"Madre","Otra")
+
+#Tablas de frecuencia de rol de madre por cada tarea
+tabla_madre_comida <- table(base_cuidados_rec$comida_mad)
+tabla_madre_contencion <- table(base_cuidados_rec$contencion_mad)
+tabla_madre_tareas <- table(base_cuidados_rec$tareas_mad)
+tabla_madre_llevar <- table(base_cuidados_rec$escuela_am_mad)
+tabla_madre_traer <- table(base_cuidados_rec$escuela_pm_mad)
+tabla_madre_dormir <- table(base_cuidados_rec$dormir_mad)  
+tabla_madre_corregir <- table(base_cuidados_rec$corregir_mad)
+tabla_madre_levantar <- table(base_cuidados_rec$levantar_mad)
+tabla_madre_reemplazo <- table(base_cuidados_rec$reemplazo_mad)
+
+#Tablas FRP por cada variable
+prop.table(tabla_madre_comida,margin = NULL)*100
+
+prop.table(tabla_madre_contencion,margin = NULL)*100
+
+prop.table(tabla_madre_tareas,margin = NULL)*100
+
+prop.table(tabla_madre_llevar,margin = NULL)*100
+
+prop.table(tabla_madre_traer,margin = NULL)*100
+
+prop.table(tabla_madre_dormir,margin = NULL)*100
+
+prop.table(tabla_madre_corregir,margin = NULL)*100
+
+prop.table(tabla_madre_levantar,margin = NULL)*100
+
+prop.table(tabla_madre_reemplazo,margin = NULL)*100
+
+
+#Generar tabla
+tabla_madre_tareas<- data.frame(
+  Madre = c(75.56,91.11,91.11,68.89,73.33,82.22,86.67,95.56,68.89),
+  Otras = c(24.44,8.89, 8.89,31.11,26.67,17.78,13.33,4.44,31.11),
+  Tareas = as.factor(c("Comida","Contención", "Tareas","Llevar","Traer","Dormir","Corrección","Levantar","Reemplazo")))
+
+View(tabla_madre_tareas)
+
+tabla_madre_tareas<-tabla_madre_tareas[c(3,1,2)]
+class(tabla_madre_tareas)
+
+
+```
+
+```{r, echo=TRUE}
+kable(tabla_madre_tareas,caption = "Tabla 1: Rol de madre en tareas de cuidado", format = "html", align="c", justify = "center", omit.headings = TRUE,
+     report.nas = FALSE, full_width = F) %>% 
+     kable_styling(latex_options="scale_down",bootstrap_options = c("striped", "hover", "condensed", "responsive"))%>% 
+     add_header_above(c(" ", "¿Quién realiza la tarea?"=2))
+
+``` 
+
+En relación al objetivo dos, en todas las tareas sobre el cuidado las madres y/o abuelas son las que se hacen cargo, esto se puede ver en la tabla 1 donde la categoría madre contiene las relaciones de madre y abuela. Las tareas con mayor porcentaje son las de contención emocional (91,11%), apoyo con las tareas escolares (91,11%) y levantar en las mañanas (95,56%), por lo que se puede agregar a la información anterior que, además de ser mujeres las que se hacen cargo, estas son mayoritariamente madres o abuelas del infante.
+
+```{r, include=FALSE}
+table(base_cuidados_rec$cuidado_trabajo)
+tabla_cuidado_trabajo <- table(base_cuidados_rec$cuidado_trabajo)
+
+tp_cuidado_trabajo <- prop.table(tabla_cuidado_trabajo)*100
+
+tp_cuidado_trabajo <- as.data.frame(tp_cuidado_trabajo)
+
+
+display.brewer.pal(n = 4, name = 'Accent')
+
+```
+
+Gráfico 2
+```{r, echo=TRUE}
+ggplot(data=tp_cuidado_trabajo, aes(x=Var1, y=Freq))+
+geom_bar(stat="identity", fill=c("#FDC086", "#BEAED4", "#7FC97F"), position=position_dodge())+
+labs(y= "Porcentaje", x = "¿Considera las labores de cuidado como trabajo?")
+
+
+```
+
+Respecto a el gráfico anterior, se puede identificar si las labores de cuidado son entendidas como trabajo por parte de las mujeres encuestadas. Como respuesta a la pregunta: "¿Considera que estas labores son un trabajo?", el 46,67% de las mujeres contestó que sí, un 40% contestó que no, un 4,44% que no sabía y un 8,89% no respondió. Con estos resultados a nivel muestral, se puede explicar que la poca diferencia entre creer que el trabajo de cuidado es un trabajo y no hacerlo, considerando la bibliografía revisada y que son sólo mujeres las que se encargan del cuidado en general, reside en la naturalización que hay de la mujer como madre, como la encargada natural del trabajo de cuidado. Por ende, la realización de estas tareas serían parte del rol de madre y no como un trabajo reconocido. 
+
+\
+
+### *c. Remuneración*
+
+Se presenta la tabla 2 para identificar la presencia o ausencia de remuneracion del cuidado según las tendencias en las estrategias de cuidado de cada familia de la muestra
+ 
+```{r, include=FALSE}
+#Crear tablas de de tareas de cuidado para analizar remuneración
+View(base_cuidados_rec)
+
+names(base_cuidados_rec)
+
+
+tabla_rem_comida<-table(base_cuidados_rec$comida_rem)
+tabla_rem_contencion<-table(base_cuidados_rec$contencion_rem)
+tabla_rem_tareas<-table(base_cuidados_rec$tareas_rem)
+tabla_rem_llevar<-table(base_cuidados_rec$escuela_am_rem)
+tabla_rem_traer<-table(base_cuidados_rec$escuela_pm_rem)
+tabla_rem_dormir<-table(base_cuidados_rec$dormir_rem)
+tabla_rem_corregir<-table(base_cuidados_rec$corregir_rem)
+tabla_rem_levantar<-table(base_cuidados_rec$levantar_rem)
+tabla_rem_reemplazo<-table(base_cuidados_rec$reemplazo_rem)
+tabla_rem_cuidad<-table(base_cuidados_rec$remuneracion)
+
+
+
+#Crear tablas FRP por cada variable
+prop.table(tabla_rem_cuidad,margin = NULL)*100
+
+prop.table(tabla_rem_comida,margin = NULL)*100
+
+prop.table(tabla_rem_contencion,margin = NULL)*100
+
+prop.table(tabla_rem_tareas,margin = NULL)*100
+
+prop.table(tabla_rem_llevar,margin = NULL)*100
+
+prop.table(tabla_rem_traer,margin = NULL)*100
+
+prop.table(tabla_rem_dormir,margin = NULL)*100
+
+prop.table(tabla_rem_corregir,margin = NULL)*100
+
+prop.table(tabla_rem_levantar,margin = NULL)*100
+
+prop.table(tabla_rem_reemplazo,margin = NULL)*100
+
+
+#Generar tabla
+tabla_rem_tareas <- data.frame(
+  No_Remunerado= c(80, 73.33, 100, 100, 88.89, 77.78, 100, 100, 100,80),
+  Remunerado= c(20, 26.67, 0, 0, 11.11, 22.22, 0, 0, 0, 20),
+  Tareas = as.factor(c("Encargada/o", "Comida","Contención", "Tareas","Llevar","Traer","Dormir","Corrección","Levantar","Reemplazo"))
+)
+
+tabla_rem_tareas
+
+
+colnames(tabla_rem_tareas) <- c("No Remunerado", "Remunerado","Tareas")
+tabla_rem_tareas<-tabla_rem_tareas[c(3,2,1)]
+
+```
+
+```{r, echo=TRUE}
+knitr::kable(tabla_rem_tareas,caption = "Tabla 2: Remuneración de tareas de cuidado", format = "html", align="c", justify = "center", omit.headings = TRUE,
+     report.nas = FALSE, full_width = F) %>% 
+     kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+ 
+```
+
+Se puede observar que hay un porcentaje mayor de personas que realizan trabajos de cuidado de manera no remunerada, donde un 80% no recibe remuneración y 20% sí. Existen sólo algunas de las tareas que son realizadas con remuneración dentro de la muestra, tales como  "preparar la comida" (26,67); "llevar a la escuela" (11,11%); "recoger a la escuela" (22,22%); "ausencia de encargado principal" (20%). Tareas como la contención emocional, apoyo con tareas escolares, hacer dormir, corrección del comportamiento y levantar en la mañana no son remuneradas en ninguno de los casos (sobre la estrategia mayormente utilizada), implicando que el cuidado, en general, es un trabajo no remunerado, el cual sólo en determinadas tareas y en la minoría de los casos es realizado de forma remunerada. 
+
+Para observar la relación entre remuneración del trabajo del cuidado y la clase social, se presenta la tabla de contingencia entre ambas variables y se  realiza la prueba de hipótesis de chi-cuadrado. 
+
+```{r, echo=TRUE}
+
+tabla3<-table(base_cuidados_rec$nse_colegio,base_cuidados_rec$remuneracion)
+
+knitr::kable(tabla3,caption = "Tabla 3: Remuneración de cuidado según nivel socioeconómico de la escuela", format = "html", align="c", justify = "center", omit.headings = TRUE,
+     report.nas = FALSE, full_width = F) %>% kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>% 
+     add_header_above(c("","Remuneración del cuidado"=2))
+
+```
+
+En la Tabla 4 se identifica la relación entre "Remuneración" y  "Clase social", para la persona encargada del cuidado, en la cual se muestra que las personas que realizan trabajos de cuidado en la clase baja totalidad no recibe remuneración por su labor en su totalidad. En el establecimiento de clase media solo una recibe remuneración. Esto cambia en la clase alta donde 8 personas reciben remuneración mientras 7 no lo hacen. A nivel general de 45 casos, 36 realizan tareas de cuidado sin remuneración. Por lo que se puede observar que, a nivel muestral, las personas que realizan los trabajos de cuidado lo hacen de manera gratuita, aunque a nivel socioeconómico alto la mayoría de las encargadas del cuidado reciben remuneración por ello.
+
+\
+
+### *d. Estrategias de cuidado*
+
+Para identificar la relación entre clase social y tipos de estrategias de cuidado se realiza un análisis, en primer lugar, del comportamiento de las estrategias de cuidado, compuestas por los criterios de género y remuneración. En segundo lugar, se analiza el comportamiento de esta misma variable en función de la clase social de los distintos establecimientos. Entonces, es posible dar cuenta de la frecuencia relativa porcentual de las estrategias de cuidado por cada tarea de cuidado consideradas como variables distintas con la información de la Tabla 3.
+ 
+```{r, include=FALSE}
+#Crear nueva variable de estrategias para cada tarea
+##Encargada/o del cuidado
+
+tabla_est_cuidado <- table(base_cuidados_rec$gen_cuidad,base_cuidados_rec$remuneracion)
+
+tabla_est_comida <- table(base_cuidados_rec$comida_gen,base_cuidados_rec$comida_rem)
+
+tabla_est_contencion <- table(base_cuidados_rec$contencion_gen,base_cuidados_rec$contencion_rem)
+
+tabla_est_tareas <- table(base_cuidados_rec$tareas_gen,base_cuidados_rec$tareas_rem)
+
+tabla_est_llevar <- table(base_cuidados_rec$escuela_am_gen,base_cuidados_rec$escuela_am_rem)
+
+tabla_est_traer <- table(base_cuidados_rec$escuela_pm_gen,base_cuidados_rec$escuela_pm_rem)
+
+tabla_est_dormir <- table(base_cuidados_rec$dormir_gen,base_cuidados_rec$dormir_rem)
+
+tabla_est_corregir <- table(base_cuidados_rec$corregir_gen,base_cuidados_rec$corregir_rem)
+
+tabla_est_levantar <- table(base_cuidados_rec$levantar_gen,base_cuidados_rec$levantar_rem)
+
+tabla_est_reemplazo <- table(base_cuidados_rec$reemplazo_gen,base_cuidados_rec$reemplazo_rem)
+
+
+#FRP de estrategias de cuidado
+prop.table(tabla_est_cuidado,margin = NULL)*100
+
+prop.table(tabla_est_comida,margin = NULL)*100
+
+prop.table(tabla_est_contencion,margin = NULL)*100
+
+prop.table(tabla_est_tareas,margin = NULL)*100
+
+prop.table(tabla_est_llevar,margin = NULL)*100
+
+prop.table(tabla_est_traer,margin = NULL)*100
+
+prop.table(tabla_est_dormir,margin = NULL)*100
+
+prop.table(tabla_est_corregir,margin = NULL)*100
+
+prop.table(tabla_est_levantar,margin = NULL)*100
+
+prop.table(tabla_est_reemplazo,margin = NULL)*100
+
+
+#Generar tabla
+tabla_estrategias <- data.frame(
+  Mujer_No_Remunerada= c(80, 71.11, 91.11, 91.11, 73.33, 73.33, 82.22, 86.67, 95.56, 71.11),
+  Mujer_Remunerada= c(20,24.44, 0, 0, 8.89, 13.33, 0, 0, 0, 17.78),
+  Hombre_No_Remunerado= c(0,2.22, 8.89, 8.89, 15.56, 4.44,17.78,13.33, 4.44, 8.89),
+  Hombre_Remunerado= c(0,2.22, 0, 0, 2.22, 8.89, 0, 0, 0, 2.22),
+  Tareas = as.factor(c("Encargada/o", "Comida","Contención", "Tareas","Llevar","Traer","Dormir","Corrección","Levantar","Reemplazo"))
+)
+
+tabla_estrategias
+
+tabla_estrategias<-tabla_estrategias[c(5,1,2,3,4)]
+
+colnames(tabla_estrategias) <- c("Tareas", "No Remunerada","Remunerada", "No remunerado", "Remunerado")
+
+```
+
+```{r, echo=TRUE}
+knitr::kable(tabla_estrategias,caption = "Tabla 4: Estrategias de cuidado", format = "html", align="c", justify = "center", omit.headings = TRUE,
+     report.nas = FALSE, full_width = F) %>% 
+     kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive", position = "left")) %>% 
+     add_header_above(c(" ", "Mujer" = 2, "Hombre" = 2))
+
+```
+
+
+A partir de los datos, se puede reconocer que son las mujeres quienes se hacen mayormente cargo de todas las tareas de cuidado, ya sea remunerado o no. Por tanto, el cuidado es un trabajo realizado principalmente por mujeres. Aun así, se puede observar que ninguna de las tareas -a excepción de encargarse mayoritariamente del cuidado como fue representado en el Gráfico 1, es realizada exclusivamente por mujeres, de todas formas, la participación masculina es mínima.
+ 
+Además, se identifica que para las tareas que sí son remuneradas, la distribución será también en todos los casos entre hombres y mujeres, pero nuevamente con una participación mayoritaria de mujeres, aunque con proporciones más cercanas. Por ejemplo, la preparación de la comida desde mujeres remuneradas consiste en el 22,22% del total de personas que realiza estas tareas, en contraste con un 2,22% de hombres remunerados que realizan esta actividad. En cambio, son un 73,33% de mujeres no remuneradas que se dedican a esta actividad mientras que los hombres no remunerados representan un 2,22% del total de personas que preparan la comida para las y los niños. Así, los hombres representan una mayor proporción dentro de las personas que realizan estos trabajos con remuneración que dentro de aquellas que los realizan sin remuneración.
+ 
+Finalmente, es posible identificar que la estrategia de "Mujer remunerada" obtiene valores entre el 8,89% y 22,22% dentro de las distintas tareas que sí son remuneradas; los de "Mujer no remunerada" varían entre 73,33% y 95,56%; los de "Hombre remunerado" entre 2,22% y 8,89%; y los de "Hombre no remunerado" entre 2,22% y 17,78% de las personas que se hacen cargo de una tarea específica de cuidado.
+ 
+ 
+```{r, include=FALSE}
+
+
+#Crear variable "Estrategias de cuidado"
+
+base_cuidados_rec$estrategias_cp <-
+ifelse (base_cuidados_rec$gen_cuidad == "Mujer" & base_cuidados_rec$remuneracion == "Remunerado", "Mujer_Remunerada",
+ifelse(base_cuidados_rec$gen_cuidad == "Mujer" & base_cuidados_rec$remuneracion == "No remunerado","Mujer_No_Remunerada", 
+ifelse (base_cuidados_rec$gen_cuidad == "Hombre" & base_cuidados_rec$remuneracion == "Remunerado","Hombre_Remunerado",
+ifelse(base_cuidados_rec$gen_cuidad == "Hombre" & base_cuidados_rec$remuneracion == "No remunerado","Hombre_No_Remunerado",""))))
+
+base_cuidados_rec$estrategias_cp
+
+
+#Tabla de contingencia estrategias de cuidado y nivel socioeconómico del colegio
+
+tabla5<-table(base_cuidados_rec$nse_colegio,base_cuidados_rec$estrategias_cp)
+
+colnames(tabla5) <- c("Mujer no remunerada", "Mujer remunerada")
+
+```
+
+```{r, echo=TRUE}
+knitr::kable(tabla5,caption = "Tabla 5: Estrategias de cuidado según nivel socioeconómico", format = "html", align="c", justify = "center", omit.headings = TRUE,
+     report.nas = FALSE, full_width = F) %>% 
+     kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive", position = "left")) %>% 
+     add_header_above(c(" ", "Estrategias"=2))
+
+```
+
+A partir de la Tabla 5, se puede identificar la relación entre clase social y estrategia de cuidado para la persona encargada principalmente de cuidado. En primer lugar se observa, al igual que en los análisis generales de la muestra, que no hay hombres que cumplan con el rol de hacerse cargo principalmente del cuidado, lo que implica que las estrategias "Hombre con remuneración" y "Hombre sin remuneración" no están presentes en la tabla. Es decir, un elemento común a las distintas clases sociales, es que son mujeres las que se hacen cargo mayoritariamente del cuidado, por lo que se puede inferir que, independiente la clase social, los hombres no se hacen cargo del cuidado.
+ 
+La tabla de contingencia muestra que las mujeres que realizan trabajos de cuidado en la clase baja en su totalidad no reciben remuneración por su labor. En cuanto a la clase media, solo una mujer recibe remuneración. Esto cambia en la clase alta donde 8 mujeres reciben remuneración mientras 7 no lo hacen. A nivel general de 45 mujeres que se encargan del cuidado en los hogares de la muestra, 36 realizan tareas de cuidado sin remuneración. Por lo que se puede observar que a nivel muestral las mujeres además de ser quienes principalmente realizan los trabajos de cuidado, lo hacen de manera gratuita (considerando también la Tabla 2), aunque a nivel socioeconómico alto la mayoría de las mujeres encargadas del cuidado reciben remuneración por ello.
+ 
+
+## *7. Conclusiones*
+
+De acuerdo a los resultados obtenidos, se puede aceptar la primera hipótesis, en la cual se concluye que en todos los casos quienes asumen el rol de encargada principal del cuidado son mujeres. No obstante, la coincidencia entre quien se hace cargo de la planificación del cuidado y del trabajo del cuidado es más recurrente en clases socioeconómicas más bajas. A esto se debe agregar que se aprueba el supuesto de que si el hombre se hace cargo de la planificación del cuidado, quien se hace cargo de las tareas es una mujer, ya que existen más hombres dedicados a las tareas de planificación que aquellos dedicados a las tareas de cuidado propiamente tales, generando proporciones diferenciadas dentro de estas actividades en Relación con las mujeres. En segundo lugar, se constata que la  participación de las mujeres es mayoritaria en cuanto a las labores del cuidado y la planificación de este, además de que una gran proporción de la muestra, similar a aquella que lo considera como trabajo, no lo considera como un trabajo. Si bien, como se menciona anteriormente, el rol de madre influye en la caracterización que se le da al trabajo de cuidado y las estrategias sobre este, no es determinante, ya que, como se encontró en los resultados, las mujeres de clase alta tienden a derivar el cuidado a terceros, esto puede deberse, principalmente, a sus condiciones económicas, educativas y laborales, según la bibliografía revisada y los resultados obtenidos. Pero, aunque hay nociones de considerar al cuidado como trabajo, la tendencia se mantiene radicalmente en que las mujeres asuman este trabajo. Por lo que se puede concluir, primeramente que, a pesar de que hay una evolución en la concepción de familia tradicional, los roles de Género (rol de madre) continúan estando presente en la mentalidad de las mujeres al momento de decidir sobre Qué estrategias de cuidado tomarán y adoptarán para sus vidas. 
+
+En cuanto a la tercera hipótesis, esta no sería aceptada totalmente. Por un lado, se reconoce, tal como se plantea hipotéticamente, la presencia del trabajo de cuidado remunerado relacionado con la frecuencia de este en la clase alta. Pero, si bien los resultados para el colegio de estrato socioeconómico medio bajo y alto son los esperados, los resultados obtenidos en el colegio medio fueron mucho menos heterogéneos de lo que se pensaba. Estos se asemejan a los resultados de estrato medio bajo, es decir, existe casi nula presencia de trabajo remunerado y homogeneidad de trabajo no remunerado, distando de los resultados obtenidos del colegio de clase alta. 
+
+Respecto a última hipótesis, se acepta la distinción de clases para las estrategias de cuidado, reconociéndose homogeneidad dentro de la dimensión de Género de las estrategias y heterogeneidad dentro de la dimensión de remuneración de esta. Así, a diferencia de lo planteado hipotéticamente, la totalidad de personas encargadas del cuidado serán mujeres, sin ninguna excepción de Género masculino. Pero algunas de ellas serán remuneradas y otras no. Esta variación en cuanto a la remuneración, difiriendo, en parte, de lo esperado, sílo se da entre la clase alta y media-baja, en conjunto con la clase media. Esta última no se comporta de manera "intermedia" entre las otras dos clases, en este sentido. Las mujeres son las que principalmente deciden sobre el cuidado independiente la clase social. Estas diferencias de estrategias según clase social son estadísticamente significativas, es decir, se podráan encontrar a nivel poblacional si el muestreo fuese probabilístico.
+
+En síntesis, los resultados de nuestro objetivo general y la respuesta a nuestra pregunta de investigación corresponden a que las estrategias de cuidado efectivamente varían según las características socioeconómicas de los colegios, en cuanto a si se opta por el trabajo de cuidado remunerado. Estas diferencias son mínimas entre el colegio medio bajo y el medio, ya que en ambos las apoderadas optan principal o totalmente por estrategias de cuidado no remuneradas. Estas diferencias se exacerban en el colegio de nivel socioeconómico alto, donde la mayoría opta por estrategias remuneradas de cuidado. Por otra, parte quienes se hacen cargo de los trabajos de cuidado y la planificación de este son principalmente mujeres, independiente de la clase social, pudiendo así aprobar parcialmente la hipótesis referida al objetivo general.
+
+A partir de los resultados obtenidos, se da cuenta claramente de la permanencia de roles de Género al interior de la estructura familiar que actúan en perjuicio del Género femenino, donde a pesar del creciente ingreso de las mujeres al mercado laboral, las labores relativas al cuidado siguen estando consagradas a este Género. Además de ello es importante considerar que la situación para las cuidadoras de clases sociales más bajas resulta aún más complicada si se considera que el trabajo del cuidado suele no recibir remuneración alguna, asimismo para las cuidadoras de estratos socioeconómicos medios, que viven una situación similar. A partir de estas situaciones, se vuelve necesaria la implementación de políticas públicas que apunten a considerar esta labor como un trabajo que debe ser remunerado y asimismo dotarlo de una nueva valoración social, para ello es de vital importancia el garantizar condiciones de protección laboral para las y los cuidadores, como establecer horarios más flexibles para quienes estudian o trabajan y deben a la vez realizar trabajos de cuidado.
+
+Además de ello, se vuelve necesario superar los roles tradicionales de Género a modo de distribuir el trabajo del cuidado en ambos Géneros, para ello es importante generar políticas públicas que apunten a una Educación diferente en la que no se fomente la asignación de ciertos trabajos para ciertos Géneros, para ello es necesaria la implementación de una  Educación no sexista que cuestione los roles de Género y no fomente la división sexual del trabajo.
+
+Finalmente, en cuanto a las futuras líneas de análisis, sería provechoso realizar una investigación de tipo cualitativa. Llevar una investigación con este corte nos permitiría abordar la subjetividad de las mujeres y ahondar en temas como el rol de madre y la culpa que este genera al momento de decidir dejar a el hijo/a, e ir a trabajar. Además, permitiría ahondar en el significado que socialmente se da a cada un de las tareas que constituyen el trabajo de cuidado y cómo este peso influye en la vida de las mujeres.                
+
+Como otra línea de análisis sería positivo ahondar sobre las condiciones laborales (entendiendo el cuidado como un trabajo, sea este remunerado o no), y cómo estas afectan, tanto a nivel tanto físico como psicológico, a quienes se hacen cargo. Estas son algunas de las líneas de investigación posibles y pertinentes a abordar, puesto que, al ser un tema contingente, hay diversas aristas posibles para seguir averiguando y aportando a un desarrollo feminista de la división de trabajos relacionados con cuidado.
+\
+\
+
+# *References*
+
+---
+nocite: '@*'
+---
+<style>
+body {
+text-align: justify}
+</style>
+<div id="refs"></div>
+\
+\
+
+```{r, echo=FALSE}
+#Información de la sesión de R
+
+sessionInfo() 
+
+```

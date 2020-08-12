@@ -1,0 +1,324 @@
+---
+title: "Preparación de datos (tratamiento)"
+author: "Javiera Abreu, Alejandra Delaveau Bascopé, Luciano Urrejola"
+date: "26/5/2020"
+output:
+  html_document:
+     theme: flatly
+     highlight: tango
+     toc: true
+     toc_float: false
+     toc_depth: 4
+     number_sections: false
+     code_folding: show
+link_citations: yes
+---
+Este documento presenta el tratamiento de datos de la "base_cuidados_2018" para su posterior análisis. 
+
+
+## 1. SETUP
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(error = FALSE)
+knitr::opts_chunk$set(cache=FALSE, # guarda renderizaciones parciales, ahorra tiempo
+                      warning = FALSE, # evita publicar advertencias
+                      message = FALSE) # evita publicar mensajes
+
+Sys.setlocale("LC_ALL","ES_ES.UTF-8") # para temas de caracteres en español, recomendable
+```
+
+## 2. Cargar y llamar paquetes
+```{r include=TRUE}
+
+pacman::p_load(dplyr, #Manipulacion de datos
+              kableExtra, #Tablas
+              ggplot2,
+              readxl,
+              haven,
+              car,
+              flextable,
+              formattable
+              ) # Información de la sesión de trabajo
+
+library(ggplot2)
+library(dplyr)
+library(car)
+library(tidyr)
+library("RColorBrewer")
+library(knitr)
+library(kableExtra)
+library(flextable)
+library(formattable)
+
+```
+
+## 3. Cargar base de datos
+```{r include=TRUE}
+#3. Cargar base de datos
+
+base_cuidados <- read_excel("../INPUT/Datos/base_cuidados_2018.xlsx")
+
+getwd()
+
+```
+
+\
+
+## 4. Seleccionar y renombrar variables
+```{r include=TRUE}
+
+View(base_cuidados)
+
+names(base_cuidados)
+
+#Recodificaciones
+
+#Seleccionamos las variables que vamos a presentar en los resultados
+base_cuidados_rec<-base_cuidados[c("p1", "p10", "p12", "p14_a_1", "p14_a_2", "p14_b_1", "p14_b_2",
+                             "p14_c_1", "p14_c_2", "p14_d_1", "p14_d_2","p14_e_1",
+                             "p14_e_2","p14_f_1","p14_f_2","p14_g_1","p14_g_2", "p14_h_1",
+                             "p14_h_2", "p14_l_1","p14_l_2", "p15")] 
+
+names(base_cuidados_rec)
+View(base_cuidados_rec)
+
+#Renombramos las variables
+base_cuidados_rec <- rename(base_cuidados_rec, c("nse_colegio"=p1,"remuneracion"=p10,
+                                                "gen_cuidad"=p12, "comida_per"=p14_a_1, 
+                                                "comida_rem"=p14_a_2,"contencion_per"=p14_b_1,
+                                                "contencion_rem"=p14_b_2,
+                                                "tareas_per"=p14_c_1, "tareas_rem"=p14_c_2,
+                                                "escuela_am_per"=p14_d_1,
+                                                "escuela_am_rem"=p14_d_2,
+                                                "escuela_pm_per"=p14_e_1,
+                                               "escuela_pm_rem"=p14_e_2,
+                                                "dormir_per"=p14_f_1,
+                                                "dormir_rem"=p14_f_2,
+                                                "corregir_per"=p14_g_1,"corregir_rem"=p14_g_2,
+                                                "levantar_per"=p14_h_1,
+                                                "levantar_rem"=p14_h_2,
+                                                "reemplazo_per"=p14_l_1,
+                                                "reemplazo_rem"=p14_l_2, 
+                                                "cuidado_trabajo"=p15))
+
+#Revisamos que se hayan cambiado los nombres
+names(base_cuidados_rec)
+
+```
+
+## 5. Recodificar categorías de respuestas de variables generales
+```{r include=TRUE}
+#Recodificamos las respuestas de variables generales
+
+##Nivel socioeconómico del colegio
+base_cuidados_rec <- base_cuidados_rec %>% mutate(nse_colegio=dplyr::recode(nse_colegio, 
+                         `1`="Medio-bajo",
+                         `2`="Medio",
+                         `3`="Alto"))
+
+##Remuneración de cuidadora/or principal
+base_cuidados_rec <- base_cuidados_rec %>% mutate(remuneracion=dplyr::recode(remuneracion, `1` = "No remunerado", `2` = "Remunerado", `3` = "Remunerado",`4` = "No remunerado"))
+
+
+##rem cuidadora/or principal
+base_cuidados_rec <- base_cuidados_rec %>% mutate(gen_cuidad=dplyr::recode(gen_cuidad, `1` = "Hombre", `2` = "Mujer", `99` = "NA"))
+
+##Cuidado como trabajo
+base_cuidados_rec <- base_cuidados_rec %>% mutate(cuidado_trabajo=dplyr::recode(cuidado_trabajo, `1` = "Si", `2` = "No", `99` = "NA"))
+
+```
+
+## 6. Recodificar categorías de respuestas de variables sobre género
+```{r include=TRUE}
+  
+#Recodificamos las respuestas de variables sobre género 
+##Comida
+base_cuidados_rec <- base_cuidados_rec %>% mutate(comida_gen=dplyr::recode(comida_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Contención
+base_cuidados_rec <- base_cuidados_rec %>% mutate(contencion_gen=dplyr::recode(contencion_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Tareas
+base_cuidados_rec <- base_cuidados_rec %>% mutate(tareas_gen=dplyr::recode(tareas_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Llevar escuela
+base_cuidados_rec <- base_cuidados_rec %>% mutate(escuela_am_gen=dplyr::recode(escuela_am_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+##Traer escuela
+base_cuidados_rec <- base_cuidados_rec %>% mutate(escuela_pm_gen=dplyr::recode(escuela_pm_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Dormir
+base_cuidados_rec <- base_cuidados_rec %>% mutate(dormir_gen=dplyr::recode(dormir_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Corregir
+base_cuidados_rec <- base_cuidados_rec %>% mutate(corregir_gen=dplyr::recode(corregir_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Levantar
+base_cuidados_rec <- base_cuidados_rec %>% mutate(levantar_gen=dplyr::recode(levantar_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+##Reemplazo
+base_cuidados_rec <- base_cuidados_rec %>% mutate(reemplazo_gen=dplyr::recode(reemplazo_per, `1` = "mujer", 
+                                                      `2` = "hombre", `3` = "mujer", 
+                                                      `4` = "hombre", `5` = "mujer", 
+                                                      `6` = "hombre",`7`="mujer", 
+                                                      `8`="hombre", `9` ="mujer",
+                                                      `10`="hombre", `11`="mujer",
+                                                      `12`="hombre", `13`="mujer",
+                                                      `14`="hombre", `15`="mujer",
+                                                      `16`="mujer", `17`="hombre"))
+
+```
+
+## 7. Recodificar las respuestas de variables sobre remuneración
+```{r include=TRUE}
+
+#Recodificamos las respuestas de variables sobre remuneración 
+##Comida
+base_cuidados_rec <- base_cuidados_rec %>% mutate(comida_rem=dplyr::recode(comida_rem, `1` = "Si", `2` = "No"))
+
+##Contención
+base_cuidados_rec <- base_cuidados_rec %>% mutate(contencion_rem=dplyr::recode(contencion_rem, `1` = "Si", `2` = "No"))
+
+##Tareas
+base_cuidados_rec <- base_cuidados_rec %>% mutate(tareas_rem=dplyr::recode(tareas_rem, `1` = "Si", `2` = "No"))
+
+##Llevar escuela
+base_cuidados_rec <- base_cuidados_rec %>% mutate(escuela_am_rem=dplyr::recode(escuela_am_rem,`1` = "Si", `2` = "No"))
+
+##Traer escuela
+base_cuidados_rec <- base_cuidados_rec %>% mutate(escuela_am_rem=dplyr::recode(escuela_am_rem, `1` = "Si", `2` = "No"))
+
+##Dormir
+base_cuidados_rec <- base_cuidados_rec %>% mutate(dormir_rem=dplyr::recode(dormir_rem, `1` = "Si", `2` = "No"))
+
+##Corregir
+base_cuidados_rec <- base_cuidados_rec %>% mutate(corregir_rem=dplyr::recode(corregir_rem, `1` = "Si", `2` = "No"))
+
+##Levantar
+base_cuidados_rec <- base_cuidados_rec %>% mutate(levantar_rem=dplyr::recode(levantar_rem, `1` = "Si", `2` = "No"))
+
+##Reemplazo
+base_cuidados_rec <- base_cuidados_rec %>% mutate(reemplazo_rem=dplyr::recode(reemplazo_rem, `1` = "Si", `2` = "No"))
+
+```
+
+## 8. Recodificar variables rol de madre
+
+```{r include=TRUE}
+#Recodificar variables
+##Comida
+base_cuidados_rec$comida_mad <- ifelse(base_cuidados_rec$comida_per=='1'| base_cuidados_rec$comida_per=='5',"Madre","Otra")
+
+##Contención
+base_cuidados_rec$contencion_mad <- ifelse(base_cuidados_rec$contencion_per=='1'| base_cuidados_rec$contencion_per=='5',"Madre","Otra")
+
+##Tareas
+base_cuidados_rec$tareas_mad <- ifelse(base_cuidados_rec$tareas_per=='1'| base_cuidados_rec$tareas_per=='5',"Madre","Otra")
+
+##Llevar escuela
+base_cuidados_rec$escuela_am_mad <- ifelse(base_cuidados_rec$escuela_am_per=='1'| base_cuidados_rec$escuela_am_per=='5',"Madre","Otra")
+
+##Traer escuela
+base_cuidados_rec$escuela_pm_mad <- ifelse(base_cuidados_rec$escuela_pm_per=='1'| base_cuidados_rec$escuela_pm_per=='5',"Madre","Otra")
+
+##Dormir
+base_cuidados_rec$dormir_mad <- ifelse(base_cuidados_rec$dormir_per=='1'| base_cuidados_rec$dormir_per=='5',"Madre","Otra")
+
+##Corregir
+base_cuidados_rec$corregir_mad <- ifelse(base_cuidados_rec$corregir_per=='1'| base_cuidados_rec$corregir_per=='5',"Madre","Otra")
+
+##Levantar
+base_cuidados_rec$levantar_mad <- ifelse(base_cuidados_rec$levantar_per=='1'| base_cuidados_rec$levantar_per=='5',"Madre","Otra")
+
+##Reemplazo
+base_cuidados_rec$reemplazo_mad <- ifelse(base_cuidados_rec$reemplazo_per=='1'| base_cuidados_rec$reemplazo_per=='5',"Madre","Otra")
+```
+
+## 8. Crear variable estrategias de cuidado
+
+```{r include=TRUE}
+base_cuidados_rec$estrategias_cp <-
+ifelse (base_cuidados_rec$gen_cuidad == "Mujer" & base_cuidados_rec$remuneracion == "Remunerado", "Mujer_Remunerada",
+ifelse(base_cuidados_rec$gen_cuidad == "Mujer" & base_cuidados_rec$remuneracion == "No remunerado","Mujer_No_Remunerada", 
+ifelse (base_cuidados_rec$gen_cuidad == "Hombre" & base_cuidados_rec$remuneracion == "Remunerado","Hombre_Remunerado",
+ifelse(base_cuidados_rec$gen_cuidad == "Hombre" & base_cuidados_rec$remuneracion == "No remunerado","Hombre_No_Remunerado",""))))
+
+base_cuidados_rec$estrategias_cp
+```
+
+## 9. Exportamos en una nueva base de datos para el análisis
+```{r include=TRUE}
+#Exportar nueva base de datos
+library(xlsx)
+
+write.xlsx(base_cuidados_rec, file = "../INPUT/Datos/base_cuidados_rec.xlsx", sheetName = "base_cuidados_rec.xlsx", append = FALSE) 
+```
+
+##10. Información de la sesión de R
+```{r, echo=TRUE}
+sessionInfo() 
+```
