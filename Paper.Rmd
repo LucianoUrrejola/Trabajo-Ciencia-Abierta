@@ -1,6 +1,6 @@
 ---
-title: "Y ahora, ¿con quién dejamos a las niñas, niñes y niños?*\
-Estrategias de cuidado de menores según género y clase social en colegios "Escuela Carlos Pezoa Véliz", "Peter College" y "Saint George""
+title: "Y ahora, ¿con quién dejamos a las niñas, niñes y niños?"
+subtitle: "Estrategias de cuidado de menores según género y clase social en colegios 'Escuela Carlos Pezoa Véliz', 'Peter College' y 'Saint George'"
 author: "Josefina Carrasco, Javiera Carvajal, Alejandra Deleaveau, Valentina González, Catalina Flores, Valentina Martínez, Javiera Abreu, Luciano Urrejola"
 date: "26/5/2020"
 output:

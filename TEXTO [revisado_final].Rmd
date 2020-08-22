@@ -4,13 +4,13 @@ author: "Javiera Abreu, Alejandra Delaveau Bascopé, Luciano Urrejola"
 date: "26/5/2020"
 output:
   html_document:
-     theme: flatly
-     highlight: tango
+     css: bootstrap.css
      toc: true
      toc_float: false
      toc_depth: 4
      number_sections: false
      code_folding: show
+     fontsize: 20pt
 csl: INPUT/Bibliografia/apa.csl
 linkcolor: blue
 bibliography: INPUT/Bibliografia/Tr.bib
@@ -23,9 +23,6 @@ Carrera de Sociología\
 Estrategias de Investigación Cuantitativa\
 Profesor: Maria Constanza Ayala\
 Ayudante: Camila Ortiz\
-
-
-
 
 
 
@@ -154,7 +151,7 @@ library(knitr)
 library(kableExtra)
 library(flextable)
 library(formattable)
-
+library(bootstrap)
 
 base_cuidados <- read_excel("Trabajo Ciencia Abierta/INPUT/Datos/base_cuidados_2018.xlsx") 
 #Cambiar por base cuidados rec
@@ -772,6 +769,7 @@ Como otra línea de análisis sería positivo ahondar sobre las condiciones labo
 ---
 nocite: '@*'
 ---
+
 <style>
 body {
 text-align: justify}

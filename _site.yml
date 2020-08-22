@@ -1,0 +1,22 @@
+name: "migracionyvivienda"
+output_dir: "."
+navbar:
+  title: "Migration and housing: a study of rental costs in 2017"
+  left:
+  - text: "Data preparation"
+    href: processing/process_arriendos.html
+  - text: "Data analysis"
+    href: processing/analisis_arriendos.html
+  - text: "Paper"
+    href: Migracion-vivienda-final-work.html
+  right:
+  - icon: fa-university fa-lg
+    href: http://www.facso.uchile.cl/
+  - icon: fa-envelope fa-lg
+    href: mailto:martin.venegas@ug.uchile.cl
+  - icon: fa-github fa-lg
+    href: https://github.com/Martin-Venegas-M/Open-Social-Sciences
+output:
+  html_document:
+    theme: readable # yeti  spacelab simplex sandstone cosmo cerulean paper darkly flatly lumen readable
+    css: 'bootrsap.min.css'
