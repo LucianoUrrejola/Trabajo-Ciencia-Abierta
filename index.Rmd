@@ -1,0 +1,9 @@
+---
+title: "Estrategias de cuidado"
+---
+
+<div align="justify";> 
+El cuidado hace referencia a una labor necesaria para procurar el bienestar cotidiano y, por ello, posee un carácter esencial. Por ende, “el cuidado será siempre una condición existencial de las personas, para la perpetuidad de la especie y grupo social” (Arenas, 2006), bajo la sociedad patriarcal generalizada globalmente, a lo largo de la historia y en la actualidad, este se encuentra relegado principalmente a las mujeeres. Es por esto que se vuelve importante estudiar las estrategias de cuidado que eligen las mujeres al momento de tener hijos/as.
+</div>
+
+Todos los archivos necesarios para encontrar este trabajo se encuentran [aqui](https://github.com/LucianoUrrejola/Trabajo-Ciencia-Abierta), ordenados en base al Protocolo IPO
