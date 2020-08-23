@@ -28,5 +28,5 @@ Aqui se encuentra:
 -La carpeta Tablas, con .xlsx de todas las tablas presentes en el trabajo
 
 
-Ver página web (aqui) [https://github.com/LucianoUrrejola/Trabajo-Ciencia-Abierta.git]
+Ver página web [aqui] (https://github.com/LucianoUrrejola/Trabajo-Ciencia-Abierta.git)
 
